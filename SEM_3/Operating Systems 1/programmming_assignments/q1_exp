@@ -1,0 +1,52 @@
+Report for file : CS18BTECH11039_prg1.c
+
+main objective : clearly defined in question statement
+
+timed run
+
+rajp152k@Raj:~/links/sem3/Operating Systems 1/assignments/programmming_assignments$ time ./a.out
+--------- 
+CS18BTECH11039_prg1.c
+ --------- 
+hey from  (child 1)process # : 4736 
+hey from (parent)process # : 4735 
+hey from (child 2)process # : 4737 
+hey from  (child 1)process # : 4736 
+hey from  (child 1)process # : 4736 
+hey from  (child 1)process # : 4736 
+hey from  (child 1)process # : 4736 
+hey from  (child 1)process # : 4736 
+hey from  (child 1)process # : 4736 
+hey from  (child 1)process # : 4736 
+hey from  (child 1)process # : 4736 
+hey from  (child 1)process # : 4736 
+hey from  (child 1)process # : 4736 
+hey from  (child 1)process # : 4736 
+hey from  (child 1)process # : 4736 
+hey from  (child 1)process # : 4736 
+hey from  (child 1)process # : 4736 
+hey from  (child 1)process # : 4736 
+hey from  (child 1)process # : 4736 
+hey from  (child 1)process # : 4736 
+hey from  (child 1)process # : 4736 
+hey from (child 2)process # : 4737 
+hey from (child 2)process # : 4737 
+hey from (parent)process # : 4735 
+hey from (child 2)process # : 4737 
+hey from (parent)process # : 4735 
+
+real    0m20.007s
+user    0m0.001s
+sys     0m0.003s
+
+
+x-x-x-x-x-x-x-x-x-
+
+output explanation
+the time taken is as expected : a little over 20 seconds
+the first 3 prints just as they are scheduled by the processor and are not under our control (their chronology)
+the next 18 prints are from child 1 (operates for 9 seconds after initial 1 second sleep)
+the next 2  prints are from child 2 the latter one being for killing child 1 
+then parent prints its message for getting a status update on child1
+then child 2 gets killed after printing its last message after which parent prints its last message and exits 
+

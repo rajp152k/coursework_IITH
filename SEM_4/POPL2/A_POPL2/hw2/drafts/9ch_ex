@@ -1,0 +1,11 @@
+Chapter 9: Excercises
+
+
+9.14>
+C++ non-virtual functions can still be over-ridden by writing a definition for the same signature in some derived class but that is not the case when using the final methods in Java: they cannot be overridden. Java clearly forbids the declaration of functions in derived classes with the same signature as a final keyworded method.
+
+9.17>
+No, one can't override base class members, the compiler simply won't allow this and a compilation error will be raised. If one needs to have one variable represent mutliple data types, unions can be used. But one is rarely so desperate to make the same variable to mean different things and this is not good practice - should be avoided if possible 
+
+9.21>
+foo being an abstract class, it is possible to declare foo pointers but not instances because a foo pointer can point to one of its derived class instances where the virtual-function is bound to a definitive method resulting in allowed method. But there is no use case where declaring a foo instance would make sense, it is just pointless.

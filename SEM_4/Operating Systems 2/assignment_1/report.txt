@@ -1,0 +1,198 @@
+AUTHOR: RAJ PATIL
+ROLLNO: CS18BTECH11039
+REPORT FOR MATRIX MULTIPLICATION ASSIGNMENT
+
+READ README FIRST
+
+
+PLAGIARISM STATEMENT
+
+I certify that this assignment is my own work, based on my personal
+study and research and that I have acknowledged all materials and sources
+used in its preparation, whether they be books, articles, reports, lecture notes,
+and any other kind of document, electronic or personal communication. I also
+certify that this assignment has not previously been submitted for
+assessment in any other course, except where specific permission has been granted from all course instructors involved, or at any other time in this course, and that I have not copied in part or whole or otherwise plagiarised the work of other persons. I pledge to uphold the principles of honesty and responsibility at CSE@IITH. In addition, I understand my responsibility to report honour violations by other students if I become aware of it.
+
+NAME: RAJ PATIL
+DATE: 22/1/2019
+
+summary of question statement:
+ - matrix multiplication using a single threaded and a multithreaded process as well as with multiple processes.
+ - Time their performance: Do not include time for memory preparation/destruction and thread/process creation as well.
+
+Stating the obvious first:
+ - calculating average times for commenting on the performance of the calculation function for fair comparison and evening out the odds encountered due to situation specific state of the processors. 
+	- achieving this in matmul_test.c submitted on the Google classroom platfor m and not the autograder; The readme clarifies this once more. 
+	- running for a total of 100 runs for each chosen combination of Number of threads/processes and separate tables have been made 
+	- the tests are for the following number of threads/processes :
+		- 1,2,4,8,16,32
+	- the first test case (1) will give us an idea of the extra resource managemnt overheads.
+ - a major issue was the synchronization of the timer for not including the times for thread creation and process creation. Explicitly talking upon that in a section in the end: the problems faced and the solutions. 
+
+TEST RUNS
+All for 100*100 arrays: allows to test for a larger number of runs in a short time which allows for a stable mean time while also not being unfair to multithreaded and multiprocess methods (happens on smaller arrays).
+
+
+0] NRUNS:NA, Nthreads = Nprocs = 8;
+
+showing a small test case first to observe that overheads exist
+
+$rajp152k@Raj:~/links/sem_4/OS2/assignments/assignment_1$ ./a.out --ar 4 --ac 4 --br 4 --bc 2
+Time taken for single threaded: 1 us
+Time taken for multi process: 386 us
+Time taken for multi threaded: 42 us
+Speedup for multi process : 0.00 x
+Speedup for multi threaded : 0.02 x
+
+
+1] NRUNS:100, Nthreads = Nprocs = 1;
+
+rajp152k@Raj:~/links/sem_4/OS2/assignments/assignment_1$ ./a.out --ar 100 --ac 100 --br 
+100 --bc 100
+NRUNS:100 | Nthreads:1 | Nprocs:1 
+Time taken for single threaded: 2479 us
+Time taken for multi process: 2976 us
+Time taken for multi threaded: 2764 us
+Speedup for multi process : 0.83 x
+Speedup for multi threaded : 0.90 x
+
+
+
+2] NRUNS:100, Nthreads = Nprocs = 2;
+
+rajp152k@Raj:~/links/sem_4/OS2/assignments/assignment_1$ ./a.out --ar 100 --ac 100 --br 
+100 --bc 100
+NRUNS:100 | Nthreads:2 | Nprocs:2 
+Time taken for single threaded: 2544 us
+Time taken for multi process: 2067 us
+Time taken for multi threaded: 1560 us
+Speedup for multi process : 1.23 x
+Speedup for multi threaded : 1.63 x
+
+3] NRUNS:100, Nthreads = Nprocs = 4;
+
+rajp152k@Raj:~/links/sem_4/OS2/assignments/assignment_1$ ./a.out --ar 100 --ac 100 --br 
+100 --bc 100
+NRUNS:100 | Nthreads:4 | Nprocs:4 
+Time taken for single threaded: 2623 us
+Time taken for multi process: 1544 us
+Time taken for multi threaded: 1423 us
+Speedup for multi process : 1.70 x
+Speedup for multi threaded : 1.84 x
+
+4] NRUNS:100, Nthreads = Nprocs = 8;
+
+rajp152k@Raj:~/links/sem_4/OS2/assignments/assignment_1$ ./a.out --ar 100 --ac 100 --br 
+100 --bc 100
+NRUNS:100 | Nthreads:8 | Nprocs:8 
+Time taken for single threaded: 2838 us
+Time taken for multi process: 1468 us
+Time taken for multi threaded: 224 u:
+Speedup for multi process : 1.93 x
+Speedup for multi threaded : 12.67 x
+
+5] NRUNS:100, Nthreads = Nprocs = 16;
+
+rajp152k@Raj:~/links/sem_4/OS2/assignments/assignment_1$ ./a.out --ar 100 --ac 100 --br 
+100 --bc 100
+NRUNS:100 | Nthreads:16 | Nprocs:16 
+Time taken for single threaded: 3709 us
+Time taken for multi process: 2200 us
+Time taken for multi threaded: 1096 us
+Speedup for multi process : 1.69 x
+Speedup for multi threaded : 3.38 x
+
+6] NRUNS:100, Nthreads = Nprocs = 32;
+
+rajp152k@Raj:~/links/sem_4/OS2/assignments/assignment_1$ ./a.out --ar 100 --ac 100 --br 
+100 --bc 100
+NRUNS:100 | Nthreads:32 | Nprocs:32 
+Time taken for single threaded: 4840 us
+Time taken for multi process: 3303 us
+Time taken for multi threaded: 1166 us
+Speedup for multi process : 1.47 x
+Speedup for multi threaded : 4.15 x
+
+TEST RUNS SUMMARY:
+ - not talking in terms of the absolute time taken for the procedures as even the single_thread_mm took longer in the 5th and the 6th test run: probably because of different processes running on my laptop. On that note, now I remember that I put on some music after the 4rth run so that's an affecting issue.
+ - multithreaded procedure runs best with 8 threads.(speedup of 12.67)
+ - multiprocess procedure runs best with 8 processes.(speedup of 1.93)
+ - note that the speedups increase upto when we have 8 segmentations of the calculation workload.
+ - this is due to that fact that my system had 4 physical cores and 8 logical cores(used for hyperthreading)
+ - also note that, when creating only 1 thread/process, the speedups(fractional) make sense as we also have to account for the context switches.
+ - Stating again that these are average runtimes for 100 runs i.e they are stable(law of large numbers) and outputs for a single run fluctuate drastically.
+ - Example : testing for the similar size arrays for Nprocs=Nthreads=8 and Nruns=1.
+
+
+rajp152k@Raj:~/links/sem_4/OS2/assignments/assignment_1$ ./a.out --ar 100 --ac 100 --br 
+100 --bc 100
+NRUNS:1 | Nthreads:8 | Nprocs:8 
+Time taken for single threaded: 2977 us
+Time taken for multi process: 1915 us
+Time taken for multi threaded: 1592 us
+Speedup for multi process : 1.55 x
+Speedup for multi threaded : 1.87 x
+
+rajp152k@Raj:~/links/sem_4/OS2/assignments/assignment_1$ ./a.out --ar 100 --ac 100 --br 
+100 --bc 100
+NRUNS:1 | Nthreads:8 | Nprocs:8 
+Time taken for single threaded: 3820 us
+Time taken for multi process: 1784 us
+Time taken for multi threaded: 1036 us
+Speedup for multi process : 2.14 x
+Speedup for multi threaded : 3.69 x
+
+rajp152k@Raj:~/links/sem_4/OS2/assignments/assignment_1$ ./a.out --ar 100 --ac 100 --br 
+100 --bc 100
+NRUNS:1 | Nthreads:8 | Nprocs:8 
+Time taken for single threaded: 3200 us
+Time taken for multi process: 1873 us
+Time taken for multi threaded: 739 us
+Speedup for multi process : 1.71 x
+Speedup for multi threaded : 4.33 x
+
+rajp152k@Raj:~/links/sem_4/OS2/assignments/assignment_1$ ./a.out --ar 100 --ac 100 --br 
+100 --bc 100
+NRUNS:1 | Nthreads:8 | Nprocs:8 
+Time taken for single threaded: 3237 us
+Time taken for multi process: 2234 us
+Time taken for multi threaded: 1651 us
+Speedup for multi process : 1.45 x
+Speedup for multi threaded : 1.96 x
+
+rajp152k@Raj:~/links/sem_4/OS2/assignments/assignment_1$ ./a.out --ar 100 --ac 100 --br 
+100 --bc 100
+NRUNS:1 | Nthreads:8 | Nprocs:8 
+Time taken for single threaded: 3510 us
+Time taken for multi process: 1908 us
+Time taken for multi threaded: 692 us
+Speedup for multi process : 1.84 x
+Speedup for multi threaded : 5.07 x
+
+
+The drastic fluctuation for small number of runs should now be obvious.
+
+TIME SYNCHRONIZATION
+
+Basic Idea for Synchronizing:
+	- have a counter on how many threads/processes have been created
+	- until the counter reaches a specific desired number, all threads/processes are spinlocked before they start their calculation.
+	- release the spin locks when this happens and start the timer.
+	- stop the timer when all the threads/processes have merged into the driver thread/process.
+
+Now as the counter is a common shared variable, I used semaphores to atomically increment it. The failure to do so may result in an infinite deadlock. 
+
+Now another issue with having a common shared variable on a true multiprocessing system is the problem of an outdated cache in the case of optimized code. The problem I was facing was that my code ran on my system but not on the jenkins server because, upon further interrogation, I got to know that the source files are being compiled with an "-O2" flag. This led to the issue stated above and hence resulting in old copies the counters in cache on a processor being considered rather than the updated one on another processor's cache. This was mainly due to the fact that the compiler could't semantically judge that common variable may be concurrently accessed on another core. So, a little bit of googling led me to the type qualifier "volatile". What it does is exactly what was needed in this case : notifying the compiler that this variable may be manipulated other than the semantically local code that is explicit. This allows it to maintain cache coherency over all the processes/threads operating on different cores.
+However, my first approach was to use cacheflush (before and after the updates, protected by a mutex) from <asm/cachectl.h>, but later found out that it is not a portable solution and hence dropped the idea. 
+
+OUTPUT DISCREPANCIES 
+
+There was also an issue of repeating output upon redirecting output to a file which was due to the writing cache being replicated upon forking. So the solution was just to flush the stdout output before each fork using fflush(stdout)  
+
+
+Acknowledment:
+
+- got to know about the working of volatile from here: https://www.embedded.com/introduction-to-the-volatile-keyword/ 
+
+- got to know about issues with optimization flags from Maruthi sir.

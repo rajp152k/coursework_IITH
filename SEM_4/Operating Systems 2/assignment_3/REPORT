@@ -1,0 +1,37 @@
+OS II
+
+RAJ PATIL 		| 	CS18BTECH11039
+KARAN BHUKAR		| 	CS18BTECH11021
+
+HW programming assignment 3 : supporting prefetch and demand paging
+
+PLAGIARISM STATEMENT 
+
+We certify that this assignment/report is our own work, based on our personal study and/or research and that we have acknowledged all material and sources used in its preparation, whether they be books, articles, reports, lecture notes, and any other kind of document, electronic or personal communication. We also certify that this assignment/report has not previously been submitted for assessment in any other course, except where specific permission has been granted from all course instructors involved, or at any other time in this course, and that we have not copied in part or whole or otherwise plagiarised the work of other students and/or persons. We pledge to uphold the principles of honesty and responsibility at CSE@IITH. In addition, We understand our responsibility to report honour violations by other students if we become aware of it.
+
+NAMES 		: RAJ PATIL , KARAN BHUKAR
+DATE 		: Tue Jun 23 19:33:02 IST 2020
+SIGNATURE	: RJ, KB
+
+REPORT
+
+objective :- to implement a character device driver with the ability to handle mmap system call(other than open and close) and be able to fetch pages in two possible ways : prefetch and demand paging
+
+discussing the technicalities:-
+	1. prefetch and demand paging:-
+		- we only need to pass an extra MAP_POPULATE flag to allow for prefetch and the system, by default, uses demand paging.
+	2. page fault handling:-
+		- all the faults are generated at once in the case of prefetch and one by one in the case of demand paging
+		- the mykmod_vm_fault method takes in the corresponding vm_fault struct(which contains the page pointer which should be set to the page in the logical address fetched for the current fault)
+		- the fault procedure first gets the kernel logical address from the userspace virtual address and then uses a macro : virt_to_page which returns, from the  kernel virtual addresses ( implies logical ), the corresponding page.
+	3. the private data structures have been allocated when necessary and avoiding memory leaks at all places.
+		- side note:- the verbose pointer casts are required to suppress warnings as C can't dereference void pointers meaningfully like C++.
+	4. an inode can be linked to by multiple files and hence a ref_count is needed to maintain how many files are linking to it currently to allow for freeing up the private stuctures when the count falls to zero.
+
+
+Sources referred :-
+
+ - https://elixir.bootlin.com/linux/v2.6/source/include/linux/mm_types.h#L228
+ - https://elixir.bootlin.com/linux/v3.10/source/include/linux/mm.h#L179
+ - https://www.oreilly.com/library/view/linux-device-drivers/0596005903/ch15.html
+

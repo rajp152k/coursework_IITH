@@ -1,0 +1,10 @@
+Raj Deepaknath Patil
+CS18btech11039
+
+FSM DSD report in laytex 
+
+
+The images have also been provided separately in the images folder
+
+do keep the folder intact if u intend to compile the latex for the images to be accessible
+in the compiled output.

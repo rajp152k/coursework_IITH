@@ -1,0 +1,13 @@
+Chapter 9
+
+This was by far the most intersting chapter where i actually learned something new and of value.
+It talks about processes, introducing the notion of nice-values and priorities(inversely related) for prioritizing tasks.
+	- basic concepts discussed in the class ( pid, ppid, tid and so on) are not discussed here
+	- ps : used to obtain a static over view of the current processes 
+	- top : for a dynamic overview(refreshed every 2 seconds) of the same
+	- for more interactability and info, one could use htop or atop
+	- was introduced to the load average metric to guage CPU utilization in the close past
+	- Linux supporting background (daemons) and foreground processes was then discussed
+	- then scheduling tasks to be performed in the future was discussed:
+		- at for an non-interactive command once at a specified time
+		- cron ( from chronos: the greek personification of time) for periodically scheduled tasks : the schedule is stored in crontab

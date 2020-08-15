@@ -1,0 +1,62 @@
+Chapter 0: CHECK YOUR UNDERSTANDING
+
+1>
+The characteristics fundamental to object oriented programming are: encapsulation, inheritance and dynamic binding method.
+
+3>
+The important benefits of abstraction are structured as follows:
+a) the user doesn't have to put in much technical thought behind the implementation and the concepts are handled by the abstraction mechanisms one at a time. One builds a smaller abstraction and then builds upon that for a more complex object, breaking down the thought in steps.
+b) easy fault finding due to the bug being easily observed to be isolated in a contained section.
+c) independence among program components : promotes reusability because one code segment is easily adaptable to other and is an opportunity to handle boiler-plate efficiently.
+
+6>
+Private members are used to restrain access to an attribute (or some subsidiary procedures) of a class to only certain specific publicly accessible(global scope) procedures. They are useful as they restrict the ways in one can modify that entity hence making errors backtrackable which is useful during exception handling(unwinding the stack).
+
+7>
+The :: is a scope resolution operator. It aids in recognizing what context does an identifier belong to (to be specific.. by specifying a namespace).
+
+10>
+A constructor is invoked unpon the creation of a new object and it is simply a an initialization routine defined by the programmer. The programmer can also explicitly specify a destructor that is invoked automatically upon the destruction of an object. However, it is not needed to be defined and a default is anyway called when the object under concern goes out of scope.
+
+14>
+The "this" keyword is useful when one decides to use externally defined modules in the class definition rather than placing that module code in the class definition itself. The latter approach is ignorant and not recommended as they would just be address translated execution procedures and instead the this keyword allows in accessing the attributes that fall under the scope of the object to which the module will be attached.
+
+16>
+Private members can only be accessed by the class in which they are defined and friend class objects.
+Protected members are accessible in the class that defines them,  ones derived from that class, and friend classes as well.
+Public members are accessible by anyone.
+
+20>
+In languages like C++ and C#, only static members of the outer class are allowed to access the class members as the corresponding inner class has only one static instance. However, Java takes it up a notch and allows an inner class to access any members of its encompassing class; each instance of the inner class belongs to the outer class and if there are many instances to an outer class, each one of them will have its own inner class that can access its members.
+
+22>
+Extension methods can be percieved as class(or even pertaining to a specific instance if you wish) extensors.
+They (from C# 3.0 onwards) are used to extend the functionality of an abstraction when inheritance is not an option. This maybe due to several reasons such as the class being sealed(C# terminology) or the case when it will be very cumbersome to change all the variables that occur in the class definition when inheritance is possible.
+
+23>
+No, a Constructor does not allocate the space for an object. It just initializes the already allocated space i.e. the space signature is already allocated, but the contents can be set according to the programmer's needs via defining a suitable constructor (a class definition can have multiple constructors).
+
+25>
+When working with references, the constructor has to be explicitly called because a reference in itself is of no significance without the binding and this allows us to check easily whether the constructor was called or not. But in a value based model, the variables start out either unitialized or initialized to a default(0 for ints in C, for instance) and this implicit nature makes it difficult to keep track of whether the desired initialization has happened or not.
+
+28>
+When dealing with inheritance, the constructor of the base class is called before the constructor of the derived class so that the latter does not see any discrepancies in its inherited members. However, to correctly call the constructor for the base class, one needs to provide the constructor's signature which would be the violation of the notion of abstraction that object orientation desires to maintain. C++ does this by allowing the header of the derived class to specify the base class's constructor's arguments.
+C++ asks for this explicitly, but in the case of other languages, say Java, if the programmer wishes to achieve a higher level of abstraction by not passing the signature, the zero-constructor for the base class is called by default(possible as Java uses a reference model and can simply initialize a reference to null). If the programmer does want to specify the specifics for the base constructor, it can be done using new.
+
+29>
+In the simplest terms, when intializing, only a constructor(the one defined in the class definition) is called. When assigning, the constructor(the one defined in the class definition) is called to create a temporary and then a copy-constructor(usually automatically defined by the compiler itself) is called to copy the contents from the temporary to the object being assigned. Note that assignment can also be done using a move-constructor and this is usually the case when dealing with references that always have to point to something, whereas failure to do so might result in undefined behaviour. For instance thread objects and mutexes (from C++11 and onwards) have move-constructors defined which are invoked when assigning them a new thread of execution or a low-level synchronization primitive respectively.
+
+31>
+Note that one can easily observe by the nomenclature itself that static refers to compile-time or (early) binding and dynamic refers to run-time or late binding. 
+A difference to note that dynamic binds require an entity(an object or something that can be referenced to) to exist at the time of binding and hence need to established during run-times. This is not the case with static binding. This is a notion most commonly discussed when discussing about the mechanisms of Java, so one could consider this example: static binds work for type class definitions and dynamic binds work for object-class definitions.
+Also note that, obviously, static binds are faster than dynamic binds(as in establishing the bind).
+In regards to virtual/non-virtual methods, in languages that use static binding by default (eg: C++), one can define a dynamically bound method by using the virtual keyword (the counterpart being a non-virtual(real) method). 
+
+35>
+When we talk about dynamic method binding, what is given is subtype polymorphism: the ability to use a derived class in the cotext where the base class is expected (assuming public permissions to public members of the base class). This allows us to define a function for the base class and pass on a derived class at run time, for instance. 
+
+40>
+When the class definition under concern contains atleast one pure virtual function, it is said to be an abstract class. This is because, no instances can be created with that class definition only and one needs those virtual methods to be bound to a defined function in a derived class. So only instances of the derived classes will make sense. The name is pretty intuitive, the class definition is abstract and not definitive, it changes depending on which derived class one looks at.
+
+43>
+object closures for the case of abstact classes can be only be achieved by the use of dynamic binds, and hence virtual methods. They allow the class under concern to refer the virtual method to the correct context for later execution.

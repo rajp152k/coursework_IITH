@@ -1,0 +1,16 @@
+Chapter 5
+
+This chapter focuses on configuring the system using the GUI.
+topics touched:
+	-basic configuration throught the system settings panel
+	-time keeping via the system settings window
+	-a bit about the network time protocol
+	-tweaking the resolution using the display panel
+	-Network manager functionality:
+		-wireless networks
+		-VPNs
+		-password management
+	-high level package management systems in different families of distributions:
+		- dpkg for the debian family
+		- rpm for the red-hat family and the open-SUSE family
+		

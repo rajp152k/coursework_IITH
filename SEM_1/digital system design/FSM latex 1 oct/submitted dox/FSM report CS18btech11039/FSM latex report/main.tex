@@ -1,0 +1,194 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage[utf8]{inputenc}
+
+
+\usepackage[a4paper, potrait, margin=2cm]{geometry}
+
+
+
+\title{Finite state machine: DSD report}
+\author{CS18BTECH11039 : Raj Patil}
+\date{1st  October  2018}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+\\
+
+\chapter{Pre-Implementation Discussion}
+
+\section{Introduction}
+\textit{This reports intends to completely record the procedure by which the state machine was implemented and the variables involved.
+\\}
+\textbf
+{Student details\\}
+name : Raj Deepaknath Patil \\
+roll no. : CS18BTECH11039 \\
+course : Digital system design \\
+
+\section{INPUT Variables}
+
+As the number of states involved in the finite state machine are 8 in number
+which are shown in a table that follows, we will need 3 binary variables as inputs to assign a separate binary combination to each state.
+
+Furthermore, as there are 4 desired operations we wish to implement, namely left, right, hazard and off; we will need further 2 more select inputs which will again be just one bit each.
+
+hence the input variables are listed as follows:-
+\begin{enumerate}
+    \item A (one of 3 variables used for state definition)
+    \item B (one of 3 variables used for state definition)
+    \item C (one of 3 variables used for state definition)
+    \item S0 (one of the 2 select inputs)
+    \item S1 (one of the 2 select inputs)
+\end{enumerate}
+\textit{\textbf{NOTE:}}the PQR inputs which are listed in the below table are just the previous state values of ABC (They are the same variables.) 
+\clearpage
+\section{Defining the states}
+
+We will need to define 8 states as listed below in the table:-\\
+
+\begin{center}
+\begin{tabular}{|c | c | c c c| }\hline
+sr no. & state description   & P  &  Q   &  R   \\ \hline
+1  &  La lit   &  1  & 0  & 0  \cr
+2  &  La+Lb lit   &  1  & 1  & 0  \cr
+3  &  La+Lb+Lc lit   &  0  & 1  & 0   \cr
+4  &  Ra lit   &  0  & 0  & 1  \cr
+5  &  Ra+Rb lit   &  0  & 1  & 1  \cr
+6  &  Ra+Rb+Rc lit   &  1  & 0  & 1 \cr
+7 & all lights lit & 1 & 1 & 1 \cr
+8 & all lights off & 0 & 0 & 0 \cr \hline
+
+\end{tabular}        
+\end{center}
+
+also assigning the names for the selection situations now for further reference:
+
+\begin{center}
+\begin{tabular}{|c|c|c|} \hline
+ S1  & S0  & select variable \cr \hline 
+ 1 & 0 & Left :- L \cr
+ 0 & 1 & Right :- R \cr 
+ 1 & 1 & hazard :- H \cr 
+ \hline
+\end{tabular}
+\\
+\end{center}
+\section{The state transition diagram}
+
+\textit{Here the select inputs are the variable which will decide what transition takes place from a particular state, the initial state is the  8th one i.e. all the lights are off initially }
+\begin{center}
+\includegraphics[width=18cm]{"state transition diagram"}
+\end{center}
+
+\clearpage
+\section{Hardware required}
+
+\textbf{As we have  8 states under consideration, we will need only \textit{3} flip-flops. \\ We will be using D flip-flops. \\}
+
+Other basic hardware required for the implementation of the circuit is :-
+
+\begin{itemize}
+    \item 6 LEDs
+    \item logic gates or a micro-controller to provide the combinational logic and the clock as well.
+    \item resistors
+\end{itemize}
+
+\chapter{implementation and combinational logic}
+\section{Transition table}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}\hline
+ State no &  previous state &   if(Left) & if(Right) & if(Hazard) \cr 
+ --& --& S1= 1, S0=0 & S1=0, S1=1 & S1=1, S0=1 \cr
+-- & PQR & ABC & ABC & ABC \cr \hline
+1 & 100 & 110 & 000 & 000 \cr
+2 & 110 & 010 & 000 & 000 \cr
+3 & 010 & 000 & 000 & 000 \cr\hline
+4 & 001 & 000 & 011 & 000 \cr
+5 & 011 & 000 & 101 & 000 \cr 
+6 & 101 & 000 & 000 & 000 \cr\hline
+7 & 111 & 000 & 000 & 000 \cr
+8 & 000 & 100 & 001 & 111 \cr\hline
+
+\end{tabular}    
+\end{center}
+
+\textbf{NOTE:}:- here A, B, C are just the next states of P, Q ,R respectively and are not logically new variables ,
+
+so they will just be the outputs to the flip-flops to which PQR will inputs.
+
+\section{Transition equations}
+
+The transition equations will be as follows :-
+
+\begin{enumerate}
+\item A = S1&&!S0&&(!Q&&!R) + !S1&&S0&&(!P&&Q&&R) + S1&&S0&&!P&&!Q&&!R 
+\item B = S1&&!S0&&(P&&!R) + !S1&&S0&&(!P&&!Q&&R) + S1&&S0&&!P&&!Q&&!R 
+\item C = !S1&&S0&&(!P&&R + !P&&!Q&&!R) + S1&&S0&&!P&&!Q&&!R 
+
+\textbf{NOTE}: the ! symbol signifies a negation.
+
+\end{enumerate}
+
+\section{The final implementation} 
+
+Before we can produce a circuit, we need to create outputs regarding the LEDs i.e for La to Rc 
+
+These outputs in terms of P, Q and R are listed below :-
+
+\begin{itemize}
+\item La = P&&!R + !P&&Q&&!R + P&&Q&&R
+\item Lb = Q&&!R + P&&Q&&R
+\item Lc = Q&&!(P&&!R + !P&&R)
+
+\item Ra = R
+\item Rb = R&&(P&&!Q + !P&&R) + P&&Q&&R
+\item Rc = P&&R
+
+\end{itemize}
+
+These outputs will be connected to the final LEDs...
+
+\textbf{the final implemented circuit is on next page}\\
+
+it was designed using an online circuit simulator ("CircuitVerse") and is solely created by me and does not involve any sort of plagiarism.
+
+\begin{center}
+\includegraphics[width=15cm]{"circuit implementation"}
+\end{center}
+
+\textit{\textbf{NOTES}}:
+\begin{enumerate}
+\item The flip-flops have been set to appropriate preset and clear and enable inputs.
+\item The combinational logic is implemented in the rectangles and is the same as the one provided in section 2.3 for the LEDs and 2.2 for the transitional equations.
+\item The Select inputs will decide where the transition takes place from a specific state.
+\item The clock and the logic was implemented using an arduino genuino uno micro-controller 
+
+\end{enumerate}
+
+\clearpage 
+
+\section{answers to the questions}
+
+\textit{This section provides the reference to the sections in which the required questions have been answered for making the evaluation explicitly easy.}
+
+\begin{enumerate}
+    \item Q1)  section 1.2
+    \item Q2)  section 1.3
+    \item Q3)  section 1.4
+    \item Q4)  section 1.5(3 flip-flops required)
+    \item Q5)  section 2.1
+    \item Q6)  section 2.2 
+    \item Q7)  section 2.3
+\end{enumerate}
+
+
+
+
+\end{document}
+

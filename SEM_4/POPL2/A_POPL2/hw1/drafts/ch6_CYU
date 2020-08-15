@@ -1,0 +1,27 @@
+CYU:
+
+17>
+The order of evaluation of the operands of a function (an operator is a function as well) is left unspecified due to the following:
+	- it allows the compiler to decide the optimal order of evaluation 
+	- for instance, in the case of \texttt{a*b + f(c)} , it is better to evaluate a*b later as it needs to be saved in some registers which may be needed by f(c) in the future: resulting in overheads when caller/callee saving
+	- however, the compiler needs to be explicit about the order of evaluation in the case when function exhibit side-effects as this may alter the final result.
+
+
+18>
+A short-circuit Boolean evaluation scheme stops further evaluation when the final value of the predicate is determined. For instance, the moment when you first encounter a True when evaluating consecutive inclusive ORs. It is wasteful to evaluate the following booleans. 
+This may also be used smartly to stop the execution at a certain point if you do not wish to do so, for instance: \texttt{if(!(ptr==NULL) && f(ptr))} will stop execution the moment it finds the pointer ptr points to NULL, thus elegantly saving us from an illegal reference in the future.
+
+
+12>
+Initialization of a variable is beneficial in the following ways:
+	- run-time costs are saved if a statically-allocated variable is initialized by the compiler itself.
+	- oblivious usage of unitialized variables is a common programming error and this can be a source of non-determinism in the execution of a program making it difficult to trace back to a point of error. Initializing all the concerned variables by default to a particular value eliminates this and allows us to reproduce errors to track them down. 
+
+2>
+The term operator is traditionally used for built-in functions that use reserved, simplified syntax and have with them, the word operand associated to signify their arguments. User-defined functions on the other hand, have a specific syntax defined at design time and syntactic sugar is not a priority.
+
+28>
+Floating point numbers are not used when iterating over a procedure due to fact that floating point arithmetic is not commutative and also that their representation is most dense near 0 and gets sparser further away in most implementations. This loss of precision may lead to non-deterministic results or implementation dependent results which is not good.
+
+16>
+Checking for definite initialization of a variable by the compiler can be tedious and difficult as the usage of a variable depends on the control flow of the program and this means the compiler has to check if the concerned variable is bounded to a deterministic value at every possible control flow branch which is wasteful and some variables will be used in a select number of possibilities. 

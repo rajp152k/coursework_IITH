@@ -1,0 +1,62 @@
+Chapter 3
+
+The linux boot process is discussed in this chapter. The reason to discuss this is mentioned as to help the user when troubleshooting problems and tweaking the computer's performance as needed.
+
+The basic stages of control flow are as follows(described alongside if need be):
+	1. power ON
+	2. BIOS
+		- Basic input/output system
+		- initialises the hardware
+			- tests the main memory 
+			- tests the screen and keyboard
+		- process also called POST:
+			- Power on self test
+		- BIOS software stored on the ROM on motherboard
+	3. MBR --> boot loader
+		- control passed on to MBR after POST
+		- MBR : identifies the bootable partition on the device memory and passes on control to the boot loader
+		- size of just 512 Bytes
+	4. Boot Loader
+		- boot loader stored on a certain sector of the device memory 
+		- vital info such as date,time and peripherals of prominence are loaded:
+			- from the CMOS values 
+			- complementary metal oxide semiconductor
+			- name of the tech used to maintain this data  
+		- some common boot loaders for linux:
+			- GRUB (GRand Unified Boot loader)
+			- ISOLINUX ( booting from peripheral storages)
+			- DAS U-Boot ( for embedded devices )
+		- boot loader has the resposibility to
+			- load the kernel image
+			- load the initial RAM disk/filesystem
+		- .. into the memory				
+	5. Kernel
+		- initialises computer's memory
+		- configures all hardware attached to the system
+		- also loads some necessary user-space processes
+	6. Initial RAM disk
+		- initramfs filesystem:
+			- contains programs and binary files
+				- reponsible for mounting proper root filesystem like:
+				- providing kernel functionality 
+				- providing device drivers for mass storage controllers ( using udev )	
+					- udev: resposible for figuring out which devices are present 
+					- locating device drivers they need to operate properly
+					- loading these drivers
+		- upon succeeding, initramfs is cleared from the RAM
+		- /sbin/init is executed
+	7. init ( parent process initiated)(parent of all non-kernel processes)
+		- hands on the mounting and pivoting to the final filesystem
+		- prompts text logins of no GUI being used else ..
+	8. X windows system ( the GUI )
+
+Partitions and file systems:
+	- partition: phyiscally contiguous section of a disk
+	- filesystem: method of storing/retrieving files on/from a hard disk
+		- FHS(file system heirarchy):
+		- files stored according to this standard layout
+		- filesystem names are case sensitive 
+		- tree : for viewing the heirarchy in command line
+
+The next part of the chapter guides us through choosing the right Linux distribution according to our needs and walks us through an install.
+

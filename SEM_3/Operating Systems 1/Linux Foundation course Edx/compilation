@@ -1,0 +1,187 @@
+Chapter 1
+
+- talks about the linux foundation
+	- its subsidiary open source endeavours in different fields 
+- talks about three major families of Linux distributions (referred to as distros from here onwards)
+	- The Red Hat family
+	- the SUSE family
+	- the Debian family
+- a mention is made about the basic difference between these which are limited to the package managers they use, the locations where certain files are stored and that's that for the major differences.
+
+Chapter 2
+
+The second chapter focuses on the abstract concepts and philosophies linux is based on.
+
+The first segment of the chapter focus on the history of linux where it gives us an idea of how ubiquitous linux is - in web servers, phones, embedded systems and how it all began.
+ 
+In the next segment, the basic ideology of linux is discussed: everything (processes, devices and files) can be represented as files which it borrows heavily from the UNIX OS ( designed for more powerful computers than a PC). All files are stored in a heirarchical manner with root being the top node of the system. It then introduces what are daemons:- processes managing other processes in background in the crudest sense.
+
+We are then introduced how linux is developed and the cause of its rapid development:- ( a major kernel release occurs every 2 or 3 months)
+	- it's updated in patches- pushed in by developers which can be 
+		- changes 
+		- additions
+		- subtractions 
+	- .. to the existing kernel
+
+In the last section of this chapter, basic linux terminology is clarified.
+
+Chapter 3
+
+The linux boot process is discussed in this chapter. The reason to discuss this is mentioned as to help the user when troubleshooting problems and tweaking the computer's performance as needed.
+
+The basic stages of control flow are as follows(described alongside if need be):
+	1. power ON
+	2. BIOS
+		- Basic input/output system
+		- initialises the hardware
+			- tests the main memory 
+			- tests the screen and keyboard
+		- process also called POST:
+			- Power on self test
+		- BIOS software stored on the ROM on motherboard
+	3. MBR --> boot loader
+		- control passed on to MBR after POST
+		- MBR : identifies the bootable partition on the device memory and passes on control to the boot loader
+		- size of just 512 Bytes
+	4. Boot Loader
+		- boot loader stored on a certain sector of the device memory 
+		- vital info such as date,time and peripherals of prominence are loaded:
+			- from the CMOS values 
+			- complementary metal oxide semiconductor
+			- name of the tech used to maintain this data  
+		- some common boot loaders for linux:
+			- GRUB (GRand Unified Boot loader)
+			- ISOLINUX ( booting from peripheral storages)
+			- DAS U-Boot ( for embedded devices )
+		- boot loader has the resposibility to
+			- load the kernel image
+			- load the initial RAM disk/filesystem
+		- .. into the memory				
+	5. Kernel
+		- initialises computer's memory
+		- configures all hardware attached to the system
+		- also loads some necessary user-space processes
+	6. Initial RAM disk
+		- initramfs filesystem:
+			- contains programs and binary files
+				- reponsible for mounting proper root filesystem like:
+				- providing kernel functionality 
+				- providing device drivers for mass storage controllers ( using udev )	
+					- udev: resposible for figuring out which devices are present 
+					- locating device drivers they need to operate properly
+					- loading these drivers
+		- upon succeeding, initramfs is cleared from the RAM
+		- /sbin/init is executed
+	7. init ( parent process initiated)(parent of all non-kernel processes)
+		- hands on the mounting and pivoting to the final filesystem
+		- prompts text logins of no GUI being used else ..
+	8. X windows system ( the GUI )
+
+Partitions and file systems:
+	- partition: phyiscally contiguous section of a disk
+	- filesystem: method of storing/retrieving files on/from a hard disk
+		- FHS(file system heirarchy):
+		- files stored according to this standard layout
+		- filesystem names are case sensitive 
+		- tree : for viewing the heirarchy in command line
+
+The next part of the chapter guides us through choosing the right Linux distribution according to our needs and walks us through an install.
+
+Chapter 4
+
+This chapter focuses the functionalities captured by the way of using the GUI(graphic user interface).
+GNOME is a popular GUI choice for Linux Operating systems.
+	-its default display manager is called gdm(gnome display manager).
+	-later on it describes some basic behaviour of  the OS: for instance : suspension of the leading to sleep.
+
+Then we go on talking about file placement via the file explorer:
+ 	-Every user has its own home directory in the system.
+	-Places menu: allows to access different parts of the computer and the network.
+	-Nautilus,now known as GNOME files, is the official file manager for the GNOME desktop.
+	-later on we explore customizing the environment a bit using themes.
+ 
+Chapter 5
+
+This chapter focuses on configuring the system using the GUI.
+topics touched:
+	-basic configuration throught the system settings panel
+	-time keeping via the system settings window
+	-a bit about the network time protocol
+	-tweaking the resolution using the display panel
+	-Network manager functionality:
+		-wireless networks
+		-VPNs
+		-password management
+	-high level package management systems in different families of distributions:
+		- dpkg for the debian family
+		- rpm for the red-hat family and the open-SUSE family
+	
+Chapter 6
+
+The main focus of this one was to introduce the common user-level applications such as text editors, web browsers, email-clients, video and audio manipulation applications, productivity tools and so on.
+
+Not going to state all of them, just stating what i use:
+	- vim as my text-editor with tmux to get a sort of snappy light-weight IDE, shifting to neovim soon
+	- lynx for quick searches from the CLI and firefox for daily-browsing
+	- lynx in unison with pipelined pandoc for quick file conversions from say markdown to commonly renderable formats like html. 
+	- GIMP for editing images: i blog hence need to optimise images being uploaded on the web; chose GIMP over photoshop because its free and copy-left as opposed to paying for copyright software.
+ 	- gcc ( itself and through g++) for compiling and linking source files.
+	- gdb for debugging
+	- valgrind for detecting memory leaks.
+	- VLC for a movie once in a while.
+  	- used to use VS-code, but vim with some plugin customization does the job well and haven't used it now since 2 months.
+	
+
+Chapter 7
+
+this chapter focuses on the basic functionality accessible via the CLI
+
+Initially a basic intro to the terminal is given and actions like shutting down the computer and rebooting are discussed.
+
+Later, they mention pathnames
+	- relative ( . , ..  for instance )
+		- relative pathnames are relative from the present working directory : displayable quickly using the pwd command.
+	- absolute (begins with the root dirtectory and follows the tree)
+	- then basic navigation commands through the file system are discussed:
+		- cd : change directory with attributes like . , .. , - and pathnames directly..
+		- ls : to list the current working directories contents
+		- tree for an overview of the files and with -d to just see the output for directories
+		- mkdir : to create directories
+		- rmdir and rm -r : to remove directories
+		- rm on its own to delete files
+		- attributes of rm such as i,f,r 
+	- then we move on to searching within the file system using the wild card characters *,? and some more with the following commands:
+		- locate: search in the database to find all file names matching a pattern
+		- find: locate files recursively from a given set of directories
+			- its exec attribute to perform some  actions on the found files
+	- touch's functionality is then discussed, including but not limited to:
+		- creating placeholder files quickly
+		- timestamping files as you desire along with accessing, changing or editing times of the file
+	- then we talk about upgrading the packages using a package management tool such as apt on ubuntu:
+	- what i do personally is the following 3 commands in succession:
+		- sudo apt-get update		: updates dependencies 
+		- sudo apt-get upgrade		: downloads and installs the new dependencies	
+		- sudo apt-get autoremove  	: cleans up the old packages which are not required anymore 
+Chapter 8
+
+This chapter focuses on how to seek help regarding the working of an functionality provided by the OS.
+
+4 basic sources are discussed:
+	- The man pages: searches,formats and displays the pages
+	- GNU info system: system of browsable linked nodes of info about commands: ideal for an interactive movement between related commands
+	- help: shorter descriptions accessible by passing -h as an argument to the command
+	- online documentation for the OS
+
+Chapter 9
+
+This was by far the most intersting chapter where i actually learned something new and of value.
+It talks about processes, introducing the notion of nice-values and priorities(inversely related) for prioritizing tasks.
+	- basic concepts discussed in the class ( pid, ppid, tid and so on) are not discussed here
+	- ps : used to obtain a static over view of the current processes 
+	- top : for a dynamic overview(refreshed every 2 seconds) of the same
+	- for more interactability and info, one could use htop or atop
+	- was introduced to the load average metric to guage CPU utilization in the close past
+	- Linux supporting background (daemons) and foreground processes was then discussed
+	- then scheduling tasks to be performed in the future was discussed:
+		- at for an non-interactive command once at a specified time
+		- cron ( from chronos: the greek personification of time) for periodically scheduled tasks : the schedule is stored in crontab

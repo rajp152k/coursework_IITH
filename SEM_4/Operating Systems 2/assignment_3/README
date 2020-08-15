@@ -1,0 +1,60 @@
+OS II
+
+RAJ PATIL 		| 	CS18BTECH11039
+KARAN BHUKAR		| 	CS18BTECH11021
+
+HW programming assignment 3 : supporting prefetch and demand paging
+
+README
+
+List of files submitted:
+- README
+- REPORT
+- mykmod_main.c
+- memutil.c
+
+directory structure with meta files:
+	- makefiles (3)
+	- a header file (mydev.h) (1)
+
+
+parent_dir: os2_hwa3
+	|
+	|include
+	|   |└── mydev.h
+	|
+	|kernel
+	|   |├── Makefile
+	|   |└── mykmod_main.c
+	|
+	|Makefile
+	|README
+	|REPORT
+	|
+	|util
+	    |├── Makefile
+	    |└── memutil.cpp
+
+3 directories, 8 files
+
+Compilation instructions:
+	1. run make in the parent directory and the object files and modules will be produced in the corresponding sub-directories
+	
+General running instructions:(from parent directory)
+Consider cleaning up the dmesg log before proceeding to allow for a more precise look on how module functionalities are being used as follows:-
+-# dmesg -C
+	1. load the module using insmod and get the major number using grep as follows:-
+		-# insmod kernel/mykmod.ko
+		-# cat /proc/devices | grep mykmod
+	2. create a device special file using the major number found, as follows:-
+		-# mknod <path to the device special file including the name> c <major no> <minor no>
+	3. perform operations on the device using the ./util/memutil executable as follows:-
+		-# ./util/memutil <path to the device special file> <arguments>
+			- call -h in arguments of the memutil executable to get the argument formats:-
+	4. unload the driver and delete the device files once you are done with the utilities:-
+		-# rm -r <path to the device file>
+		-# rmmod mykmod
+	5. the output log is now present in dmesg; to further filter it down to only what concerns the module, run :-
+		-# dmesg | grep mykmod > dmesg_output	
+			- the concerned output log will be printed out in dmesg_output
+

@@ -1,0 +1,21 @@
+RAJ PATIL
+CS18BTECH11039
+#Summary of libraries used in the questions:
+
+generic libraries used:
+iostream: input and output
+sstream: buffering the input into stringstreams
+
+specific libraries used with purpose:
+
+vector: handling dynamically allocated memory for arrays :
+		- so that didn't have to realloc manually each time an input is taken	
+		- used in questions 3,4,5 for building the adjacency matrix and as an iterable array for maintaining custom sets: implemented using boolean arrays.	
+
+set: only for maintaining a set of vertices of the graph and in no other case 
+	- have used a custom built data structure for maintaining the set requirements of Kruskal's algorithm and not used the STL in that case.
+
+queue: for taking in the input for graph questions, because earlier, the question statement didn't mention the input of the number of edges as input so queued them in temporarily and prepared the adjacency matrix according to the queue's metrics
+
+used const int INT_MAX and not the inbuilt macro itself as then I would have to include bits/stdc++.h and that wouldn't help in giving a quick overview of the libraries used
+

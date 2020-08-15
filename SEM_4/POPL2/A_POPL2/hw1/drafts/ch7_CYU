@@ -1,0 +1,66 @@
+CYU:
+
+2>
+strongly typed: a language is strongly typed if it doesn't allow, in some way achievable by the language implementation, the application of any operation to any entity that is not intended to be operated in that manner.
+statically typed: a language is statically typed if it is statically typed if it is strongly typed and type checking can be performed at compile time. Type checking is the process of ensuring that the program abides by the language's type compatibility rules. A voilation is said to be a type clash.
+Because C is a more von-neumannish language, it is closer to the hardware and the programmer has more flexibility with how to deal with the bit patterns represented by entities: for instance, in pointer arithmetic, ptr+1 , doesn't increase the hexadecimal value of ptr by 1 but by the number of bytes the value to which ptr points to can be stored in. As it is architecture dependent, enforcing universal type checking rules gets difficult.
+
+7>
+C and Icon:
+ - C uses integers in the place of booleans where a 0 represents false and anything else is true.
+ - Icon replaced Booleans with a generic idea of failures and successes using a generator mechanism. 
+
+10>
+aggregates are composite literals. They come in handy when we need to initialize, say a user-defined type such as a struct which is a combinational of mulitple fundamental types. They can be positional or key-worded. They save a lot of time when initializing composite data types.
+
+11>
+Two types are said to be equivalent if they are "equal". The "equal" can be interpreted in two ways: Structural equivalence and Lexical equivalence. Structural equivalence is based on the content of the  type definition. Name/Lexical equivalence is based on the lexical occurence of these type definitions ( this results in each definition creating a new type). Structural equivalence allows the language designer to define the extent to which attributes of a type definition should be checked for them to be "equivalent".
+Type compatibility is a loser constraint than type equivalence. Again, its definition is language dependent. Two types are compatible if the can be operated with that operator and results and side-effects make sense: for instance an integer and a double are compatible with each other when being added together. 
+
+15>
+ - Type conversion (casting) changes the value of one type to another
+ - Type coercion performs a conversion automatically in some contexts
+ - nonconverting type casts are used to interpret the bit pattern of a value according to a different type's guidelines.
+
+19>
+Type inference is performed when the type of temporaries (expressions,for instance)  or a variable needs to be evaluated depending on the context. 
+Some instances when types are inferred rather than being explicitly mentioned:
+ - the sum of two integers will be an integer
+ - the result of a comparison will be a boolean
+ - the result of an assignment( where they are expressed by expressions) will be the type of the l-value in the assignment 
+
+23>
+An assigment can be represented by a single operation between the two records where, it is easier to do so depending on the memory layout used by the language to represent the record.
+However, comparison(equality for instance) requires all fields of the record to compared one by one and is inherently more tedious. Hence, languages like C avoid the situation by outlawing full-record comparisons and one has to write relevant routine themselves for the desired purpose. 
+
+26>
+Uses of variant records(Unions):
+ - allowing the same set of bytes to interpreted in two different ways
+ - represent alternative sets of fields within a record which allows for an efficient way to save on memory which will matter in the case of large databases, for instance.
+
+33>
+Contiguous allocation gives the programmer the freedom to exploit cache benefits by providing two ways to store the arrays: row-major and column-major : the way matters when the order in which the matrices will be accessed differs predictably.
+Row-pointer layout is used by some languages as an alternative to Contiguous allocation. The subarrays(rows) can lie in segmented portions of the memory and we have a corresponding array pointing to the head of different rows. This ofcourse results in a bit more space required by Row-pointer method. However, it allows the programmer to use Jagged-arrays (rows of different lengths) (also called ragged arrays) and this also allows for constructing a new array from pre-existing arrays without copying the original ones to a different memory location.
+
+34>
+In Row-major order, consecutive locations in the memory hold elements that differ by one in the final subscript(except the last element of the row) i.e. rows are concatenated one after another in the memory when storing them.
+In Column-major order, consecutive locations in the memory hold elements that differ by one in the initial subscript(except the last element of the column) i.e. columns are concatenated one after another in the memory when storing them.
+The programmer must know the difference between the two storage types and which one the compiler uses as programs that use nested loops to access all the elements of large, mulitdimensionaly arrays vary in performance depending on the compiler's choice. The incorrect combination of code and compiler inference could result in a lot of cache misses during run time resulting in the slower execution of the code.
+
+42>
+Pointers and arrays go hand-in-hand in C. Generally, the array name in C is automatically converted to a pointer to the first element of the array. This allows for the programmer to use efficient pointer arithmetic. However, this requires the array to be stored contiguously and failure to do so occasionaly results in a false dereference(segmentation fault). The risk of this is higher in case we are using row-pointer method for storing arrays as C-compilers are not forced to check if an array is not segmented and the programmer chooses the contiguous way to reference to elements such as *(a + n_rows*i + j) rather than *(*(a+i)+j). With that out of the way, pointer arithmetic give power to the programmer to perform some quick elementary operations of the array and the results are scaled by the size of data type help by the array which is convenient. 
+
+45>
+Garbage refers the sections in the /relating to memory when executing a process regarding to the memory leaks and dangling references that need to be handled in order to free the resources consumed by them and avoid any unpredictable behaviour in case the program tries to access them in incorrect ways.
+Garbage is created when the user forgets to free any heap-allocated memory(memory leak) or when a  pointer still point to the un-bound address after freeing the corresponding memory
+Reference counts: a count is maintained on the number of references that point to the object of concern and whenever the count reaches zero, the object's resources are reclaimed by the process(freed). However, a memory leak occurs when one can't access an object from a named reference i.e. a pointer residing on the stack to be specific. Hence, in the case of dynamically allocated circular lists, the list's nodes won't be reclaimed even if the head of the list (located in the stack) starts pointing to another object or is terminated at the end of a function's scope. With that in mind, it is relatively easy to implement this mechanism.
+Tracing collection: this has a better definition of a useful object being one that is referred to by a named variable(something outside the heap). Trace collectors then work by recursively exploring the heap, starting from terminal pointers and deallocating the object if one doesn't reach a non-heap location for a reference. This is more taxing (computationally) and introduces non-uniformity in the run-time performance depending on when the garbage collector decideds to kick in.
+
+46>
+Mark-and-Sweep
+	- this involves traversing the heap twice: once to mark the useless blocks(found by a recursive traversal back to references).
+	- the second traversal deletes the useless blocks (frees the corresponding resources for use by other processes).
+Stop-and-Copy
+	- this algorithm deals with the problem of memory fragmentation. The heap is divided into two virtual halves and memory is allocated in a particular half. When this half is nearly full, the collector kicks-in and each reachable block in this half is copied to the other in a compact manner, simulatneously updating the references and marking the complete first half as free for use. This means that only half of the heap can be used at once, however. This also avoids the need to perform the first and last steps of the mark and sweep algorithm ( finding which ones are useless and deleting them) and instead just copies the useful blocks to the second half. The role of the halfs is then switched the next time the collector is called.
+Generational Garbage Collection
+For further reducing the cost of collection, the heap is segmented into generations which correspond to the objects with different life-expectancies. Each newly allocated object starts-off in a nursery segment and is promoted to the next generation once it passes the collector's examinations without being freed. It is shares similarities to both mark-and-sweep and stop-and-copy in the sense that it deletes and copies the segments in different situations. Whenever the process is low on storage, it first only frees the useless blocks in the nursery segment and proceeds to the next generations only if necessary, thus saving on time. 

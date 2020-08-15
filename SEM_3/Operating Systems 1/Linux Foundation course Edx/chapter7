@@ -1,0 +1,30 @@
+Chapter 7
+
+this chapter focuses on the basic functionality accessible via the CLI
+
+Initially a basic intro to the terminal is given and actions like shutting down the computer and rebooting are discussed.
+
+Later, they mention pathnames
+	- relative ( . , ..  for instance )
+		- relative pathnames are relative from the present working directory : displayable quickly using the pwd command.
+	- absolute (begins with the root dirtectory and follows the tree)
+	- then basic navigation commands through the file system are discussed:
+		- cd : change directory with attributes like . , .. , - and pathnames directly..
+		- ls : to list the current working directories contents
+		- tree for an overview of the files and with -d to just see the output for directories
+		- mkdir : to create directories
+		- rmdir and rm -r : to remove directories
+		- rm on its own to delete files
+		- attributes of rm such as i,f,r 
+	- then we move on to searching within the file system using the wild card characters *,? and some more with the following commands:
+		- locate: search in the database to find all file names matching a pattern
+		- find: locate files recursively from a given set of directories
+			- its exec attribute to perform some  actions on the found files
+	- touch's functionality is then discussed, including but not limited to:
+		- creating placeholder files quickly
+		- timestamping files as you desire along with accessing, changing or editing times of the file
+	- then we talk about upgrading the packages using a package management tool such as apt on ubuntu:
+	- what i do personally is the following 3 commands in succession:
+		- sudo apt-get update		: updates dependencies 
+		- sudo apt-get upgrade		: downloads and installs the new dependencies	
+		- sudo apt-get autoremove  	: cleans up the old packages which are not required anymore 

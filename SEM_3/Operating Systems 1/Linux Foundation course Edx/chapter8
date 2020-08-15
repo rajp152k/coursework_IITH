@@ -1,0 +1,9 @@
+Chapter 8
+
+This chapter focuses on how to seek help regarding the working of an functionality provided by the OS.
+
+4 basic sources are discussed:
+	- The man pages: searches,formats and displays the pages
+	- GNU info system: system of browsable linked nodes of info about commands: ideal for an interactive movement between related commands
+	- help: shorter descriptions accessible by passing -h as an argument to the command
+	- online documentation for the OS

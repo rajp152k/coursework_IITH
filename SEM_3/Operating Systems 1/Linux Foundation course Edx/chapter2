@@ -1,0 +1,17 @@
+Chapter 2
+
+The second chapter focuses on the abstract concepts and philosophies linux is based on.
+
+The first segment of the chapter focus on the history of linux where it gives us an idea of how ubiquitous linux is - in web servers, phones, embedded systems and how it all began.
+ 
+In the next segment, the basic ideology of linux is discussed: everything (processes, devices and files) can be represented as files which it borrows heavily from the UNIX OS ( designed for more powerful computers than a PC). All files are stored in a heirarchical manner with root being the top node of the system. It then introduces what are daemons:- processes managing other processes in background in the crudest sense.
+
+We are then introduced how linux is developed and the cause of its rapid development:- ( a major kernel release occurs every 2 or 3 months)
+	- it's updated in patches- pushed in by developers which can be 
+		- changes 
+		- additions
+		- subtractions 
+	- .. to the existing kernel
+
+In the last section of this chapter, basic linux terminology is clarified.
+

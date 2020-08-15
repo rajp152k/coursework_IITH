@@ -1,0 +1,106 @@
+XS ch7
+
+6>
+consider A = 1 and B = -2 ;
+showing the behaviour of rem and mod for these values:
+
+rem:
+1 = (1/-2)*(-2) + (1 rem -2)
+(1 rem -2) = 1 - 0 = 1
+
+mod:
+1 = (-2)*(-1)+(1 mod -2)
+(1 mod -2) = 1 - 2 = -1 
+
+Similarly, any generic case where A and B are of opposite signs will yield differing results
+
+Talking about the use cases of the two types.
+Now say when checking if a number is odd, using the program:
+
+bool is_odd(int n){
+	return (n mod 2==1)
+}
+will do the job for any n but using rem in this case i.e. :
+bool is_odd(int n){
+	return (n rem 2==1)
+}
+is not sufficient as negative numbers will not pass the test and will return False as the predicate value (-1 != 1)
+
+However, in Mathematics (number theory), the remainder/modulo is considered to be positive irrespective of the signs of A and B and these discrepancies arise only due to different implementations. So, it is better to have only one modulo operator that returns only the absolute value of the corresponding result and the programmer should explicitly handle the sign according to the needs of the situation rather than remembering which one follows what kind of division (truncated and floor).
+
+Both C and Pascal use the first implementation i.e. the answer is dependent on the sign of A only. I think this is the right choice because programs usually have the B hard coded ( dividing the expected output in equivalence classes of our choice ) and A varies at run time ( as in the is_odd check above) 
+
+15>
+The size of the struct will be 8 bytes. Assuming that A is stored in Row-major order(not possible to answer if it stored in row pointer order)
+the address of A[3][7] will be 1000 + 8*(3*10 + 7) = 1296
+
+
+17>
+contents of registers initially:
+r1: A
+r2: i
+r3: j
+
+desired final state : r1 contains the value of A[i][j]
+cases: storage using row-major format and row-pointer format
+
+Row-major format: A[i][j] = *(A + 4*(9*i +j))
+simple as integers are stored contiguously
+
+Row-pointer format: A[i][j] = *( *(A+8*i) + 4*j)
+here i corresponds to the index of the row i.e. it will be a hexadecimal pointer taking up a storage of 8 bytes. Hence, *(A+8*i) will contain the pointer to the ith row and increment by 4*j to reach the jth column.
+
+Definition of the pseudo language:
+(defining only what is needed)
+
+multiply:
+mul r1,r2,r3:-
+side effect : r1 = r2*r3
+
+add:
+add r1,r2,r3:-
+side effect : r1 = r2+r3
+
+load:
+ld r1,r2 :-
+side effect : store contents at memory address r2 into r1
+
+Row-major format:
+
+mul r2,r2,9
+add r2,r2,r3
+mul r2,r2,4
+add r2,r2,r1
+ld r1,r2
+
+Row-pointer format:
+
+mul r2,r2,8
+add r4,r1,r2
+ld r2,r4
+mul r3,r3,4
+add r2,r2,r3
+ld r1,r2
+
+The code for row-major is likely to be faster as we have a single load instruction in that case instead of two loads when using a row-pointer format, the rest of the instructions being the same in number.
+
+
+20>
+
+double *a[n]:
+	a is an array containing n pointers to doubles
+
+double (*b)[n]:
+	b stores the address of the first element of an array containing n doubles
+
+double (*c[n])():
+	here we are declaring a function which is stored at the address *(c+n) and the function returns a double.
+
+double (*d())[n]:
+	here an array of n doubles is being declared and the pointer to the first location is stored as the address location returned by the function d().
+
+49> 
+
+Java has 4 types of references which are used to distinguish between the treatment recieved by them from the Garbage collector : Strong, Weak, Soft and Phantom.
+If an object has only weak references(they have to be explicitly declared), it is marked for garbage collection. The default one is strong which works like a normal references. Weak references can allow us to use the mark and sweep algorithm or any corresponding algorithm from the same family to make all references from a pointer i n the heap data to be a weak one: that way we can deal with issues such as circular queues where only the head will be a strong reference and the links between nodes will be weak references. 
+

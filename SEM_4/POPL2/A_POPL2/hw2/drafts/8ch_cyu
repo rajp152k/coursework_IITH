@@ -1,0 +1,59 @@
+Chapter 8: CHECK YOUR UNDERSTANDING
+
+
+3> 
+This is maintained by the caller (as this work depends on the lexical nesting of the caller). The standard approach is for the caller to compute the callee's static chain links and pass it as a hidden parameter to the callee. This leads to 2 cases: if the callee is nested inside the caller, the static chain of the two is same. Otherwise if the callee is k scopes outward, the caller dereferences k times outward and passes the obtained link as the callee's static link.
+
+5>
+Both stack and frame pointers are necessary for a process due to the following. frame pointers store the last frame's base address so as to conveniently collapse the stack and this also allows us to access the callee saved registers with a small negative offset from the frame pointer. Similarly, the stack pointer points to the end of the stack's scope of valid variables and arguments to called routines can be easily accessed with a small positive offset.
+Note: offsets' signs are corresponding to when the stack grows downwards.
+
+6>
+A subroutine with no local variables may not need a stack frame on a RISC machine. They also don't need to write to the memory and only need to read instructions from there. Consequently, taking arguments as registers, rather than incurring the overhead of book-keeping results in them being extremely fast.
+
+8>
+Whenever, a work can be done by both caller and callee, we prefer the callee as we will save space if the callee does as much work as possible. This is so because the tasks performed in the callee appear only once in the program but that done in the caller appear at every call site resulting, which is not favourable as a regular function is called multiple times.
+
+9>
+This kind of operation is the reflection of technology of the 1970's when register sets were significantly smaller and memory access was significantly faster as compared to processor speed, which not quite  the case today.
+
+11>
+In-line expansion of a subroutine is doesn't affect the program's meaning and moreover, Macros aren't type safe. Furthermore, the arguments that have side-effects are handled correctly in the case of in-lines before the funciotn body is entered and this is not the case with macros. All this with similar performance improvements(though slightly less than macros, due to their rash nature).
+
+19>
+Returning references from functions in C++ is useful for this case(other than the convenience factor): Some objects do not support copies(eg: file buffers) resulting in them not being able to be passed or returned by value. Of course, one can use pointers, but references are better when one has to do this on multiple occasions, as dereferencing for each manipulation of the object can be tiring.
+
+22>
+A default isn't necessarily provided by the caller and if it is not, the callee uses a pre-assigned, default value. The implementation is fairly straightforward: in any call with missing parameters, the compiler pretends as if the defaults were provided.
+
+24>
+Variable length argument lists allow us to pass an indeterminate(at compile time) number of arguments to functions giving the programmer more freedom. As C,C++ are statically typed, additional parameters are not type safe and the programmer has to use a collection of standard routines to access the extra arguments. C# and Java also support the usage of variable length argument lists but they do so in a type safe manner as compared to their parent languages, enforcing all trailing parameters to share a common type.
+
+27>
+The difference between macros and generic subroutines is similar to that between macros and inline subroutines(see question no. 11). Macros aren't type safe and their side-effects may not be handled properly as they don't obey scopes,naming and type rules that apply to generic subroutines(that's why templates are created for).
+
+30>
+The generic being an abstraction, the interface concerning its usage must provide all the information that must be known by the user of the generic. This is enforced in the design of several languages by constraining the parameters: to be more specific, the require the operations permitted on that generic to be explicitly declared.
+Implicit constraints are employed by some languages (for instance C++ and modula3) where they do not enforce explicit definitions of the generic but still check how the parameters are used.
+
+LEFT 35
+
+39>
+The problem wiht setjmp and longjmp is that they are implemented by saving the current registers in the setjmp buffer and by restoring them in longjmp. There is no handlers' list and the stack growth is ingored rather than the usual unwinding that happens in normal exception handling mechanisms. This results in the problem that the register contents at the beginning of the handler do not reflect the effects of successfully completed part of the protected code, they were just saved before the code was run. This also results in the dirtying of the cache which has to be addressed by the usage of the volatile keyword in front of that variable.
+
+40>
+The volatile keyword is used to notify the C compiler that a variable may change spontaneously in the main memory and consequently instructs the compiler to flush the cache entries for that variable after each read and write. In this case, if a handler needs to see changes to a variable that may be modified by the protected code, then the programmer must specify the volatile keyword in that variables declaration.
+
+42>
+Coroutines are a form of sequential processing: only one executes at a time(like subroutines) but they switch between them more fluently compared to a common subroutine(the stack grows and collapses).
+Threads are a form of concurrrent processing: multiple threads can run at a time.
+
+46>
+Simulation of discretizable real-world events is discrete event simulation. It is used when one wants to test the behaviour of a program in response to real events but doing so is dangerous ( example: failure control during a flight's systems mishap ). This is one of the most important application of coroutines (via event-based programming) which allows to create an abstraction and experiment with it safely for finding loopholes.
+Discrete because it can't be used with continuous happenings such as the growth of a crystal or studying fluid behaviour(unless you get down to the level of a particle).
+
+47>
+Events (w.r.t. the programming esoterics) refers to an asynchronous activity that is detected by the program (maybe I/O or a request to a server by a client). Asynchronous being the key-word here : the user shouldn't be made to wait for an event to happen and then take action(synchronous behaviour), especially in the case when response times are important(GUI applications).
+
+
+later: 35

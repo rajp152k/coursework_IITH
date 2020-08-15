@@ -1,0 +1,9 @@
+Chapter 1
+
+- talks about the linux foundation
+	- its subsidiary open source endeavours in different fields 
+- talks about three major families of Linux distributions (referred to as distros from here onwards)
+	- The Red Hat family
+	- the SUSE family
+	- the Debian family
+- a mention is made about the basic difference between these which are limited to the package managers they use, the locations where certain files are stored and that's that for the major differences.

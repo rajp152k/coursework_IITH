@@ -1,0 +1,15 @@
+Chapter 6
+
+The main focus of this one was to introduce the common user-level applications such as text editors, web browsers, email-clients, video and audio manipulation applications, productivity tools and so on.
+
+Not going to state all of them, just stating what i use:
+	- vim as my text-editor with tmux to get a sort of snappy light-weight IDE, shifting to neovim soon
+	- lynx for quick searches from the CLI and firefox for daily-browsing
+	- lynx in unison with pipelined pandoc for quick file conversions from say markdown to commonly renderable formats like html. 
+	- GIMP for editing images: i blog hence need to optimise images being uploaded on the web; chose GIMP over photoshop because its free and copy-left as opposed to paying for copyright software.
+ 	- gcc ( itself and through g++) for compiling and linking source files.
+	- gdb for debugging
+	- valgrind for detecting memory leaks.
+	- VLC for a movie once in a while.
+  	- used to use VS-code, but vim with some plugin customization does the job well and haven't used it now since 2 months.
+		

@@ -1,0 +1,14 @@
+Chapter 4
+
+This chapter focuses the functionalities captured by the way of using the GUI(graphic user interface).
+GNOME is a popular GUI choice for Linux Operating systems.
+	-its default display manager is called gdm(gnome display manager).
+	-later on it describes some basic behaviour of  the OS: for instance : suspension of the leading to sleep.
+
+Then we go on talking about file placement via the file explorer:
+ 	-Every user has its own home directory in the system.
+	-Places menu: allows to access different parts of the computer and the network.
+	-Nautilus,now known as GNOME files, is the official file manager for the GNOME desktop.
+	-later on we explore customizing the environment a bit using themes.
+ 
+

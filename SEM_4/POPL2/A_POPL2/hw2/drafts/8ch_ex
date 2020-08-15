@@ -1,0 +1,51 @@
+Chapter 8: EXERCISES 
+
+8.3>
+consider the following C program:
+
+#include <stdio.h>
+
+int main(){
+	int a =10;
+	printf("%d %d %d %d\n",a++,++a,--a,a--);
+	return 0;
+}
+
+the following output is recieved:
+
+rajp152k@Raj:~/links/sem_4/POPL2/A_POPL2/hw2/8ex$ gcc 3.c
+rajp152k@Raj:~/links/sem_4/POPL2/A_POPL2/hw2/8ex$ ./a.out
+9 10 10 10
+
+note that we did not see 10 first and a possible execution order begins with a-- being evaluated first. The point is, the compiler chooses the order of evaluation in the case of C and C++ and its not always fixed(like from left to right).
+
+
+
+8.4>
+Repeatable behaviour maybe observed on most systems as the stack grows and collapses on the same set of virtual addresses leading to the actual increment being performed on the same address explaining the constant difference between the outputs. As for the first output being 0, this may just be a compiler preference which intializes integers to 0 and then doesn't reinitialize it again detecting that the last time that address was in the stack, it was already an int( possible explanation ). This being a compiler's criterion to decide, may result in different results on different machines dependent on the compiler being used or in fact, the architecture itself.
+
+
+8.8>
+The reason it works without code optimizations is simple: the reference/value object in the function refers to a temporary and not the object itself resulting in the newly referred temporary being assigned the 0 and not the y. But in the case of compiler optimizations, the new temporary may not be created as one can see that the result of the argument (y+0) is the same and recalculating it would be wasteful, resulting in y being changed, regardless.
+
+a very simple workaround is to call shift(x,x,y)
+this will keep the value of y unchanged and x will hold the value of y as, in the function definition, c(the third argument) occurs in the second statement and not the first one.
+
+resulting in the following execution order:
+x=x
+x=y
+
+with the value of y being unchanged.
+
+8.15>
+Yes, it does run faster, as the parameters are by default initialized by the the default arguments and when we pass optional parameters, an overhead of reassigning the variable in the local scope is incurred(talking in terms of loads and stores to the main memory).
+
+8.29>
+talking about C++ destructors:
+one possible implementation could be:
+- check if the object was passed by reference to that subroutine, in that case, do not destroy
+- if it was passed by value, destroy the object
+- if it was created in the local scope and one doesn't intend to return it, destroy
+- if it was created in the local scope and one intends to return it, return a zero-constructed object of the same class with some sort of furthre exception handling mechanism so as to be type safe.
+
+

@@ -1,0 +1,75 @@
+Exercises
+
+1>
+No, these actions are not contradictory. They are infact orthogonal to each other. Evaluating an operand and performing the concerned operation is different.
+
+for instance:
+consider the two executions:
+
+(1*2)+(2*3)+(3*6)
+=2+(2*3)+(3*6)
+=2+6+(3*6)
+=8+(3*6)
+=8+18
+=26
+
+and 
+
+(1*2)+(2*3)+(3*6)
+=(1*2)+6+(3*6)
+=(1*2)+6+18
+=2+6+18
+=8+18
+=26
+
+both are left associative (observing + for now) but the operands are evaluated in a different order.
+
+
+4>
+prefix notation:
+/(+-(0)(b)(sqrt(-*(b)(b)(*4*(a)(c)))))(*(2)(a))
+
+postfix notation:
+((0)(b)-)(sqrt((b)(b)*((4)(a)*(c)*)))((2)(a)*)/
+
+no we do not need and extra symbol for unary negation: it can be represented as -(0)(b) and (0)(b)- in prefix and postfix notation respectively ( corresponding to 0-b in infix notation)
+
+7>
+
+consider the following program:
+
+#include <stdio.h>
+
+int main(){
+        int x =0;
+        printf("%x %x\n",&x,&(&x));
+        return  0;
+}
+
+compilation output:
+test.c: In function ‘main’:
+test.c:5:22: error: lvalue required as unary ‘&’ operand
+  printf("%x %x\n",&x,&(&x));
+
+The error reported is that the & operator takes in only an l-value as an argument and &x always returns a constant hexadecimal literal, hence this expression can never be valid in c irrespective of what x represents in the above program.
+
+8>
+No, this is not a coincidence as when designing a language based on the reference model, problems such as memory leaks and dangling references are faced if the task of freeing the allocated memory is left to the programmer. To deal with this, an automatic garbage collector is a must for saving on the programmer's time and effort resulting in a more convenient experience while coding, allowing the programmer to focus on the core project at hand rather than secondary details which should be an important objective for any language..     
+
+24>
+The objective of this piece of code is to find the first row with all entries as zeros; if it exists, the index of the row is returned otherwise the variable first_zero_row holds -1 as its value.
+
+No, this use-case is not convincing as one can do without using the goto as shown in the code below and with more readable code.
+
+int first_zero_row = -1
+int i,j
+for(i=0;i<n;i++){
+	for (j=0;j<n;j++){
+		if(A[i][j]) break;
+	}
+	if(A[i][j]) continue;
+	first_zero_row=i;
+	break;
+}
+
+the code above breaks off the inner loop when first encountering a 1 in the row and proceeds on checking the next row if it exited the inner loop in this fashion. If it did not exit the loop this way(all zeros in the row), it sets the first_zero_row variable to the correct index and exits the outer loop displaying the same behaviour as before without the need of a goto also making the code more readable.

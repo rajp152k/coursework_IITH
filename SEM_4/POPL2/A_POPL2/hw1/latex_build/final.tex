@@ -1,0 +1,716 @@
+%%%%%%%%%%%%  Generated using docx2latex.com  %%%%%%%%%%%%%%
+
+%%%%%%%%%%%%  v2.0.0-beta  %%%%%%%%%%%%%%
+
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{latexsym}
+\usepackage{amsfonts}
+\usepackage[normalem]{ulem}
+\usepackage{soul}
+\usepackage{array}
+\usepackage{amssymb}
+\usepackage{extarrows}
+\usepackage{graphicx}
+\usepackage[backend=biber,
+style=numeric,
+sorting=none,
+isbn=false,
+doi=false,
+url=false,
+]{biblatex}\addbibresource{bibliography.bib}
+
+\usepackage{subfig}
+\usepackage{wrapfig}
+\usepackage{wasysym}
+\usepackage{enumitem}
+\usepackage{adjustbox}
+\usepackage{ragged2e}
+\usepackage[svgnames,table]{xcolor}
+\usepackage{tikz}
+\usepackage{longtable}
+\usepackage{changepage}
+\usepackage{setspace}
+\usepackage{hhline}
+\usepackage{multicol}
+\usepackage{tabto}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{fancyhdr}
+\usepackage[toc,page]{appendix}
+\usepackage[hidelinks]{hyperref}
+\usetikzlibrary{shapes.symbols,shapes.geometric,shadows,arrows.meta}
+\tikzset{>={Latex[width=1.5mm,length=2mm]}}
+\usepackage{flowchart}\usepackage[paperheight=11.69in,paperwidth=8.27in,left=1.0in,right=1.0in,top=1.0in,bottom=1.0in,headheight=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\TabPositions{0.5in,1.0in,1.5in,2.0in,2.5in,3.0in,3.5in,4.0in,4.5in,5.0in,5.5in,6.0in,}
+
+\urlstyle{same}
+
+\renewcommand{\_}{\kern-1.5pt\textunderscore\kern-1.5pt}
+
+ %%%%%%%%%%%%  Set Depths for Sections  %%%%%%%%%%%%%%
+
+% 1) Section
+% 1.1) SubSection
+% 1.1.1) SubSubSection
+% 1.1.1.1) Paragraph
+% 1.1.1.1.1) Subparagraph
+
+
+\setcounter{tocdepth}{5}
+\setcounter{secnumdepth}{5}
+
+
+ %%%%%%%%%%%%  Set Depths for Nested Lists created by \begin{enumerate}  %%%%%%%%%%%%%%
+
+
+\setlistdepth{9}
+\renewlist{enumerate}{enumerate}{9}
+		\setlist[enumerate,1]{label=\arabic*)}
+		\setlist[enumerate,2]{label=\alph*)}
+		\setlist[enumerate,3]{label=(\roman*)}
+		\setlist[enumerate,4]{label=(\arabic*)}
+		\setlist[enumerate,5]{label=(\Alph*)}
+		\setlist[enumerate,6]{label=(\Roman*)}
+		\setlist[enumerate,7]{label=\arabic*}
+		\setlist[enumerate,8]{label=\alph*}
+		\setlist[enumerate,9]{label=\roman*}
+
+\renewlist{itemize}{itemize}{9}
+		\setlist[itemize]{label=$\cdot$}
+		\setlist[itemize,1]{label=\textbullet}
+		\setlist[itemize,2]{label=$\circ$}
+		\setlist[itemize,3]{label=$\ast$}
+		\setlist[itemize,4]{label=$\dagger$}
+		\setlist[itemize,5]{label=$\triangleright$}
+		\setlist[itemize,6]{label=$\bigstar$}
+		\setlist[itemize,7]{label=$\blacklozenge$}
+		\setlist[itemize,8]{label=$\prime$}
+
+\setlength{\topsep}{0pt}\setlength{\parskip}{8.04pt}
+\setlength{\parindent}{0pt}
+
+ %%%%%%%%%%%%  This sets linespacing (verticle gap between Lines) Default=1 %%%%%%%%%%%%%%
+
+
+\renewcommand{\arraystretch}{1.3}
+
+\title{POPL II A : JAN 20 : Homework}
+\author{ Raj Patil : CS18BTECH11039 }
+\date{\today}
+
+%%%%%%%%%%%%%%%%%%%% Document code starts here %%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+
+\maketitle
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+\par
+
+
+
+\vspace{\baselineskip}
+
+
+ %%%%%%%%%%%%  Starting New Page here %%%%%%%%%%%%%%
+
+\newpage
+
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+\textbf{\textit{This document was generated in \LaTeX}}\par
+\textbf{\textit{Chapter 6: CHECK YOUR UNDERSTANDING }}\par
+
+
+\vspace{\baselineskip}
+\textbf{17>}\par
+
+The order of evaluation of the operands of a function (an operator is a function as well) is left unspecified due to the following:\par
+
+it allows the compiler to decide the optimal order of evaluation \par
+
+for instance, in the case of \ \  a$\ast$ b + f(c)   , it is better to evaluate a$\ast$ b later as it needs to be saved in some registers which may be needed by f(c) in the future: resulting in overheads when caller/callee saving\par
+
+however, the compiler needs to be explicit about the order of evaluation in the case when function exhibit side-effects as this may alter the final result.\par
+
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+\textbf{18>}\par
+
+A short-circuit Boolean evaluation scheme stops further evaluation when the final value of the predicate is determined. For instance, the moment when you first encounter a True when evaluating consecutive inclusive ORs. It is wasteful to evaluate the following Booleans. \par
+
+This may also be used smartly to stop the execution at a certain point if you do not wish to do so, for instance: \ \ \  if(!(ptr==NULL) $\&$ $\&$  f(ptr))\   will stop execution the moment it finds the pointer ptr points to NULL, thus elegantly saving us from an illegal reference in the future.\par
+
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+\textbf{12>}\par
+
+Initialization of a variable is beneficial in the following ways:\par
+
+run-time costs are saved if a statically-allocated variable is initialized by the compiler itself.\par
+
+oblivious usage of uninitialized variables is a common programming error and this can be a source of non-determinism in the execution of a program making it difficult to trace back to a point of error. Initializing all the concerned variables by default to a particular value eliminates this and allows us to reproduce errors to track them down. \par
+
+
+\vspace{\baselineskip}
+\textbf{2>}\par
+
+The term operator is traditionally used for built-in functions that use reserved, simplified syntax and have with them, the word operand associated to signify their arguments. User-defined functions on the other hand, have a specific syntax defined at design time and syntactic sugar is not a priority.\par
+
+
+\vspace{\baselineskip}
+\textbf{28>}\par
+
+Floating point numbers are not used when iterating over a procedure due to fact that floating point arithmetic is not commutative and also that their representation is most dense near 0 and gets sparser further away in most implementations. This loss of precision may lead to non-deterministic results or implementation dependent results which is not good.\par
+
+
+\vspace{\baselineskip}
+\textbf{16>}\par
+
+Checking for definite initialization of a variable by the compiler can be tedious and difficult as the usage of a variable depends on the control flow of the program and this means the compiler has to check if the concerned variable is bounded to a deterministic value at every possible control flow branch which is wasteful and some variables will be used in a select number of possibilities.\par
+
+
+
+ %%%%%%%%%%%%  Starting New Page here %%%%%%%%%%%%%%
+
+\newpage
+
+\vspace{\baselineskip}\textbf{\textit{Chapter 6: EXERCISES}}\par
+
+
+\vspace{\baselineskip}
+\textbf{1>}\par
+
+No, these actions are not contradictory. They are in fact orthogonal to each other. Evaluating an operand and performing the concerned operation is different.\par
+
+
+\vspace{\baselineskip}
+for instance:\par
+
+consider the two executions:\par
+
+
+\vspace{\baselineskip}
+(1$\ast$ 2)+(2$\ast$ 3)+(3$\ast$ 6)\par
+
+=2+(2$\ast$ 3)+(3$\ast$ 6)\par
+
+=2+6+(3$\ast$ 6)\par
+
+=8+(3$\ast$ 6)\par
+
+=8+18\par
+
+=26\par
+
+
+\vspace{\baselineskip}
+and \par
+
+
+\vspace{\baselineskip}
+(1$\ast$ 2)+(2$\ast$ 3)+(3$\ast$ 6)\par
+
+=(1$\ast$ 2)+6+(3$\ast$ 6)\par
+
+=(1$\ast$ 2)+6+18\par
+
+=2+6+18\par
+
+=8+18\par
+
+=26\par
+
+
+\vspace{\baselineskip}
+both are left associative (observing + for now) but the operands are evaluated in a different order.\par
+
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+\textbf{4>}\par
+
+prefix notation:\par
+
+/(+-(0)(b)(sqrt(-$\ast$ (b)(b)($\ast$ 4$\ast$ (a)(c)))))($\ast$ (2)(a))\par
+
+
+\vspace{\baselineskip}
+postfix notation:\par
+
+((0)(b)-)(sqrt((b)(b)$\ast$ ((4)(a)$\ast$ (c)$\ast$ )))((2)(a)$\ast$ )/\par
+
+
+\vspace{\baselineskip}
+no, we do not need and extra symbol for unary negation: it can be represented as -(0)(b) and (0)(b)- in prefix and postfix notation respectively (corresponding to 0-b in infix notation)\par
+
+
+\vspace{\baselineskip}
+\textbf{7>}\par
+
+
+\vspace{\baselineskip}
+consider the following program:\par
+
+
+\vspace{\baselineskip}
+$\#$ include <stdio.h>\par
+
+
+\vspace{\baselineskip}
+int main()$ \{ $ \par
+
+\ \ \ \ \ \ \  int x =0;\par
+
+\ \ \ \ \ \ \  printf("$\%$ x $\%$ x$\textbackslash$ n",$\&$ x,$\&$ ($\&$ x));\par
+
+\ \ \ \ \ \ \  return\  0;\par
+
+$ \} $ \par
+
+
+\vspace{\baselineskip}
+compilation output:\par
+
+test.c: In function ‘main’:\par
+
+test.c:5:22: error: lvalue required as unary ‘$\&$ ’ operand\par
+
+\  printf("$\%$ x $\%$ x$\textbackslash$ n",$\&$ x,$\&$ ($\&$ x));\par
+
+
+\vspace{\baselineskip}
+The error reported is that the $\&$  operator takes in only an l-value as an argument and $\&$ x always returns a constant hexadecimal literal, hence this expression can never be valid in c irrespective of what x represents in the above program.\par
+
+
+\vspace{\baselineskip}
+\textbf{8>}\par
+
+No, this is not a coincidence as when designing a language based on the reference model, problems such as memory leaks and dangling references are faced if the task of freeing the allocated memory is left to the programmer. To deal with this, an automatic garbage collector is a must for saving on the programmer's time and effort resulting in a more convenient experience while coding, allowing the programmer to focus on the core project at hand rather than secondary details which should be an important objective for any language.\ \ \ \  \par
+
+
+\vspace{\baselineskip}
+\textbf{24>}\par
+
+The objective of this piece of code is to find the first row with all entries as zeros; if it exists, the index of the row is returned otherwise the variable first\_zero\_row holds -1 as its value.\par
+
+
+\vspace{\baselineskip}
+No, this use-case is not convincing as one can do without using the goto as shown in the code below and with more readable code.\par
+
+
+\vspace{\baselineskip}
+int first\_zero\_row = -1\par
+
+int i,j\par
+
+for(i=0;i<n;i++)$ \{ $ \par
+
+\tab for (j=0;j<n;j++)$ \{ $ \par
+
+\tab \tab if(A[i][j]) break;\par
+
+\tab $ \} $ \par
+
+\tab if(A[i][j]) continue;\par
+
+\tab first\_zero\_row=i;\par
+
+\tab break;\par
+
+$ \} $ \par
+
+
+\vspace{\baselineskip}
+the code above breaks off the inner loop when first encountering a 1 in the row and proceeds on checking the next row if it exited the inner loop in this fashion. If it did not exit the loop this way(all zeros in the row), it sets the first\_zero\_row variable to the correct index and exits the outer loop displaying the same behaviour as before without the need of a goto also making the code more readable.\par
+
+
+
+ %%%%%%%%%%%%  Starting New Page here %%%%%%%%%%%%%%
+
+\newpage
+
+\vspace{\baselineskip}\textbf{\textit{Chapter 7 : CHECK YOUR UNDERSTANDING}}\par
+
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+\textbf{2>}\par
+
+strongly typed: a language is strongly typed if it doesn't allow, in some way achievable by the language implementation, the application of any operation to any entity that is not intended to be operated in that manner.\par
+
+statically typed: a language is statically typed if it is statically typed if it is strongly typed and type checking can be performed at compile time. Type checking is the process of ensuring that the program abides by the language's type compatibility rules. A violation is said to be a type clash.\par
+
+Because C is a more von-neumannish language, it is closer to the hardware and the programmer has more flexibility with how to deal with the bit patterns represented by entities: for instance, in pointer arithmetic, ptr+1 , doesn't increase the hexadecimal value of ptr by 1 but by the number of bytes the value to which ptr points to can be stored in. As it is architecture dependent, enforcing universal type checking rules gets difficult.\par
+
+
+\vspace{\baselineskip}
+\textbf{7>}\par
+
+C and Icon:\par
+
+C uses integers in the place of Booleans where a 0 represents false and anything else is true.\par
+
+Icon replaced Booleans with a generic idea of failures and successes using a generator mechanism. \par
+
+
+\vspace{\baselineskip}
+\textbf{10>}\par
+
+aggregates are composite literals. They come in handy when we need to initialize, say a user-defined type such as a struct which is a combinational of multiple fundamental types. They can be positional or key-worded. They save a lot of time when initializing composite data types.\par
+
+
+\vspace{\baselineskip}
+\textbf{11>}\par
+
+Two types are said to be equivalent if they are "equal". The "equal" can be interpreted in two ways: Structural equivalence and Lexical equivalence. Structural equivalence is based on the content of the type definition. Name/Lexical equivalence is based on the lexical occurrence of these type definitions (this results in each definition creating a new type). Structural equivalence allows the language designer to define the extent to which attributes of a type definition should be checked for them to be "equivalent".\par
+
+Type compatibility is a loser constraint than type equivalence. Again, its definition is language dependent. Two types are compatible if they can be operated with that operator and results and side-effects make sense: for instance, an integer and a double are compatible with each other when being added together. \par
+
+
+\vspace{\baselineskip}
+\textbf{15>}\par
+
+Type conversion (casting) changes the value of one type to another\par
+
+Type coercion performs a conversion automatically in some contexts\par
+
+Nonconverting type casts are used to interpret the bit pattern of a value according to a different type's guidelines.\par
+
+
+\vspace{\baselineskip}
+\textbf{19>}\par
+
+Type inference is performed when the type of temporaries (expressions, for instance) or a variable need to be evaluated depending on the context. \par
+
+Some instances when types are inferred rather than being explicitly mentioned:\par
+
+the sum of two integers will be an integer\par
+
+the result of a comparison will be a Boolean\par
+
+the result of an assignment( where they are expressed by expressions) will be the type of the l-value in the assignment \par
+
+
+\vspace{\baselineskip}
+\textbf{23>}\par
+
+An assigment can be represented by a single operation between the two records where, it is easier to do so depending on the memory layout used by the language to represent the record.\par
+
+However, comparison(equality for instance) requires all fields of the record to compared one by one and is inherently more tedious. Hence, languages like C avoid the situation by outlawing full-record comparisons and one has to write relevant routine themselves for the desired purpose. \par
+
+
+\vspace{\baselineskip}
+\textbf{26>}\par
+
+Uses of variant records(Unions):\par
+
+allowing the same set of bytes to interpreted in two different ways\par
+
+represent alternative sets of fields within a record which allows for an efficient way to save on memory which will matter in the case of large databases, for instance.\par
+
+
+\vspace{\baselineskip}
+\textbf{33>}\par
+
+Contiguous allocation gives the programmer the freedom to exploit cache benefits by providing two ways to store the arrays: row-major and column-major : the way matters when the order in which the matrices will be accessed differs predictably.\par
+
+Row-pointer layout is used by some languages as an alternative to Contiguous allocation. The subarrays(rows) can lie in segmented portions of the memory and we have a corresponding array pointing to the head of different rows. This ofcourse results in a bit more space required by Row-pointer method. However, it allows the programmer to use Jagged-arrays (rows of different lengths) (also called ragged arrays) and this also allows for constructing a new array from pre-existing arrays without copying the original ones to a different memory location.\par
+
+
+\vspace{\baselineskip}
+\textbf{34>}\par
+
+In Row-major order, consecutive locations in the memory hold elements that differ by one in the final subscript (except the last element of the row) i.e. rows are concatenated one after another in the memory when storing them.\par
+
+In Column-major order, consecutive locations in the memory hold elements that differ by one in the initial subscript (except the last element of the column) i.e. columns are concatenated one after another in the memory when storing them.\par
+
+The programmer must know the difference between the two storage types and which one the compiler uses as programs that use nested loops to access all the elements of large, multidimensionally arrays vary in performance depending on the compiler's choice. The incorrect combination of code and compiler inference could result in a lot of cache misses during run time resulting in the slower execution of the code.\par
+
+
+\vspace{\baselineskip}
+\textbf{42>}\par
+
+Pointers and arrays go hand-in-hand in C. Generally, the array name in C is automatically converted to a pointer to the first element of the array. This allows for the programmer to use efficient pointer arithmetic. However, this requires the array to be stored contiguously and failure to do so occasionally results in a false dereference (segmentation fault). In case of the array being stored on the stack and assuming the stack is filled even after the array, the programmer would not even know in the case of an out-of-bound access if the new element being pointed to is the same type.The risk of this is higher in case we are using row-pointer method for storing arrays as C-compilers are not forced to check if an array is not segmented and the programmer chooses the contiguous way to reference to elements such as $\ast$ (a + n\_rows$\ast$ i + j) rather than $\ast$ ($\ast$ (a+i)+j). With that out of the way, pointer arithmetic give power to the programmer to perform some quick elementary operations of the array and the results are scaled by the size of data type help by the array which is convenient. \par
+
+
+\vspace{\baselineskip}
+\textbf{45>}\par
+
+Garbage refers the sections in the /relating to memory when executing a process regarding to the memory leaks and dangling references that need to be handled in order to free the resources consumed by them and avoid any unpredictable behaviour in case the program tries to access them in incorrect ways.\par
+
+Garbage is created when the user forgets to free any heap-allocated memory(memory\ leak) or when a  pointer still point to the un-bound address after freeing the corresponding memory\par
+
+Reference counts: a count is maintained on the number of references that point to the object of concern and whenever the count reaches zero, the object's resources are reclaimed by the process(freed). However, a memory leak occurs when one can't access an object from a named reference i.e. a pointer residing on the stack to be specific. Hence, in the case of dynamically allocated circular lists, the list's nodes won't be reclaimed even if the head of the list (located in the stack) starts pointing to another object or is terminated at the end of a function's scope. With that in mind, it is relatively easy to implement this mechanism.\par
+
+Tracing collection: this has a better definition of a useful object being one that is referred to by a named variable (something outside the heap). Trace collectors then work by recursively exploring the heap, starting from terminal pointers and deallocating the object if one doesn't reach a non-heap location for a reference. This is more taxing (computationally) and introduces non-uniformity in the run-time performance depending on when the garbage collector decides to kick in.\par
+
+
+\vspace{\baselineskip}
+\textbf{46>}\par
+
+\textbf{Mark-and-Sweep}\par
+
+this involves traversing the heap twice: once to mark the useless blocks(found by a recursive traversal back to references).\par
+
+the second traversal deletes the useless blocks (frees the corresponding resources for use by other processes).\par
+
+\textbf{Stop-and-Copy}\par
+
+this algorithm deals with the problem of memory fragmentation. The heap is divided into two virtual halves and memory is allocated in a particular half. When this half is nearly full, the collector kicks-in and each reachable block in this half is copied to the other in a compact manner, simultaneously updating the references and marking the complete first half as free for use. \par
+
+This means that only half of the heap can be used at once, however. This also avoids the need to perform the first and last steps of the mark and sweep algorithm (finding which ones are useless and deleting them) and instead just copies the useful blocks to the second half. The role of the halves is then switched the next time the collector is called.\par
+
+\textbf{Generational Garbage Collection}\par
+
+For further reducing the cost of collection, the heap is segmented into generations which correspond to the objects with different life-expectancies. Each newly allocated object starts-off in a nursery segment and is promoted to the next generation once it passes the collector's examinations without being freed. It is shares similarities to both mark-and-sweep and stop-and-copy in the sense that it deletes and copies the segments in different situations. Whenever the process is low on storage, it first only frees the useless blocks in the nursery segment and proceeds to the next generations only if necessary, thus saving on time.\par
+
+
+
+ %%%%%%%%%%%%  Starting New Page here %%%%%%%%%%%%%%
+
+\newpage
+
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\textbf{\textit{Chapter 7: EXERCISES}}\par
+
+
+\vspace{\baselineskip}
+\textbf{6>}\par
+
+consider A = 1 and B = -2 ;\par
+
+showing the behaviour of rem and mod for these values:\par
+
+
+\vspace{\baselineskip}
+rem:\par
+
+1 = (1/-2)$\ast$ (-2) + (1 rem -2)\par
+
+(1 rem -2) = 1 - 0 = 1\par
+
+
+\vspace{\baselineskip}
+mod:\par
+
+1 = (-2)$\ast$ (-1)+(1 mod -2)\par
+
+(1 mod -2) = 1 - 2 = -1 \par
+
+
+\vspace{\baselineskip}
+Similarly, any generic case where A and B are of opposite signs will yield differing results\par
+
+
+\vspace{\baselineskip}
+Talking about the use cases of the two types.\par
+
+Now say when checking if a number is odd, using the program:\par
+
+
+\vspace{\baselineskip}
+bool is\_odd(int n)$ \{ $ \par
+
+\tab return (n mod 2==1)\par
+
+$ \} $ \par
+
+will do the job for any n but using rem in this case i.e. :\par
+
+bool is\_odd(int n)$ \{ $ \par
+
+\tab return (n rem 2==1)\par
+
+$ \} $ \par
+
+is not sufficient as negative numbers will not pass the test and will return False as the predicate value (-1 != 1)\par
+
+
+\vspace{\baselineskip}
+However, in Mathematics (number theory), the remainder/modulo is considered to be positive irrespective of the signs of A and B and these discrepancies arise only due to different implementations. So, it is better to have only one modulo operator that returns only the absolute value of the corresponding result and the programmer should explicitly handle the sign according to the needs of the situation rather than remembering which one follows what kind of division (truncated and floor).\par
+
+
+\vspace{\baselineskip}
+Both C and Pascal use the first implementation i.e. the answer is dependent on the sign of A only. I think this is the right choice because programs usually have the B hard coded (dividing the expected output in equivalence classes of our choice) and A varies at run time (as in the is\_odd check above) \par
+
+
+\vspace{\baselineskip}
+\textbf{15>}\par
+
+The size of the struct will be 8 bytes. Assuming that A is stored in Row-major order(not possible to answer if it stored in row pointer order)\par
+
+the address of A[3][7] will be 1000 + 8$\ast$ (3$\ast$ 10 + 7) = 1296\par
+
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+\textbf{17>}\par
+
+contents of registers initially:\par
+
+r1: A\par
+
+r2: i\par
+
+r3: j\par
+
+
+\vspace{\baselineskip}
+desired final state : r1 contains the value of A[i][j]\par
+
+cases: storage using row-major format and row-pointer format\par
+
+
+\vspace{\baselineskip}
+Row-major format: A[i][j] = $\ast$ (A + 4$\ast$ (9$\ast$ i +j))\par
+
+simple as integers are stored contiguously\par
+
+
+\vspace{\baselineskip}
+Row-pointer format: A[i][j] = $\ast$ ( $\ast$ (A+8$\ast$ i) + 4$\ast$ j)\par
+
+here i corresponds to the index of the row i.e. it will be a hexadecimal pointer taking up a storage of 8 bytes. Hence, $\ast$ (A+8$\ast$ i) will contain the pointer to the ith row and increment by 4$\ast$ j to reach the jth column.\par
+
+
+\vspace{\baselineskip}
+Definition of the pseudo language:\par
+
+(defining only what is needed)\par
+
+
+\vspace{\baselineskip}
+multiply:\par
+
+mul r1,r2,r3:-\par
+
+side effect : r1 = r2$\ast$ r3\par
+
+
+\vspace{\baselineskip}
+add:\par
+
+add r1,r2,r3:-\par
+
+side effect : r1 = r2+r3\par
+
+
+\vspace{\baselineskip}
+load:\par
+
+ld r1,r2 :-\par
+
+side effect : store contents at memory address r2 into r1\par
+
+
+\vspace{\baselineskip}
+Row-major format:\par
+
+
+\vspace{\baselineskip}
+mul r2,r2,9\par
+
+add r2,r2,r3\par
+
+mul r2,r2,4\par
+
+add r2,r2,r1\par
+
+ld r1,r2\par
+
+
+\vspace{\baselineskip}
+Row-pointer format:\par
+
+
+\vspace{\baselineskip}
+mul r2,r2,8\par
+
+add r4,r1,r2\par
+
+ld r2,r4\par
+
+mul r3,r3,4\par
+
+add r2,r2,r3\par
+
+ld r1,r2\par
+
+
+\vspace{\baselineskip}
+The code for row-major is likely to be faster as we have a single load instruction in that case instead of two loads when using a row-pointer format, the rest of the instructions being the same in number.\par
+
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+\textbf{20>}\par
+
+
+\vspace{\baselineskip}
+double $\ast$ a[n]:\par
+
+\tab a is an array containing n pointers to doubles\par
+
+
+\vspace{\baselineskip}
+double ($\ast$ b)[n]:\par
+
+\tab b stores the address of the first element of an array containing n doubles\par
+
+
+\vspace{\baselineskip}
+double ($\ast$ c[n])():\par
+
+\tab here we are declaring a function which is stored at the address $\ast$ (c+n) and the function returns a double.\par
+
+
+\vspace{\baselineskip}
+double ($\ast$ d())[n]:\par
+
+\tab here an array of n doubles is being declared and the pointer to the first location is stored as the address location returned by the function d().\par
+
+
+\vspace{\baselineskip}
+\textbf{49> }\par
+
+
+\vspace{\baselineskip}
+Java has 4 types of references which are used to distinguish between the treatment received by them from the Garbage collector: Strong, Weak, Soft and Phantom.\par
+
+If an object has only weak references (they have to be explicitly declared), it is marked for garbage collection. The default one is strong which works like a normal reference. Weak references can allow us to use the mark and sweep algorithm or any corresponding algorithm from the same family to make all references from a pointer i n the heap data to be a weak one: that way we can deal with issues such as circular queues where only the head will be a strong reference and the links between nodes will be weak references. \par
+
+
+\vspace{\baselineskip}
+
+\printbibliography
+\end{document}
