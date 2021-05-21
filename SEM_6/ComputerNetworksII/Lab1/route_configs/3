@@ -1,0 +1,8 @@
+1_vyos:
+    set interfaces ethernet eth1 ip ospf cost 1
+
+2_vyos:
+    set interfaces ethernet eth1 ip ospf cost 1
+
+3_vyos:
+    set interfaces ethernet eth1 ip ospf cost 1

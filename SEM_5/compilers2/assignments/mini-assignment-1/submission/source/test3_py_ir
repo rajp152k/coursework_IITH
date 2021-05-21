@@ -1,0 +1,7 @@
+  4           0 LOAD_CONST               1 (2)
+              2 STORE_FAST               0 (x)
+
+  5           4 LOAD_FAST                0 (x)
+              6 LOAD_CONST               1 (2)
+              8 BINARY_ADD
+             10 RETURN_VALUE

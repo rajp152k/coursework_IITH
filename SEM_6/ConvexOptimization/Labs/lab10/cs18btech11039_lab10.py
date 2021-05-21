@@ -1,0 +1,95 @@
+#  RAJ PATIL
+#  CS18BTECH11039 
+#  Convex Optimization : Lab 10
+
+###### ###### ###### ###### ######
+import numpy as np
+import cvxpy as cp
+import matplotlib.pyplot as plt
+####### part A ###########
+formulation = '''
+The problem is not convex in terms of k due to the fact that k is constrained to be an integer which introduces discontinuities.
+But it is indeed quasiconvex in terms of k as the sublevel sets will be convex.
+The problem can then be tackled using the bisection method(checking feasibility of k for a range of parameters and reiterating)
+
+--- 
+
+Listing out the constraints and the objectives:
+    obj ==> minimize(k) # a sentinel constraint for feasibility checks
+    constraints ==>
+    0 <= T_left,T_right <= T_max for each of the k-1 time steps
+    other constraints will be the recurrences for position and forces
+    Note that only enforcing the recurrences also works as the first two constraints are a consequence of the them
+'''
+
+theta = 15*np.pi/180
+st = np.sin(theta)
+ct = np.cos(theta)
+M = np.array([[-st,st],[ct,ct]])
+T_m = 2.
+m = .1
+g = np.array([.0,-9.8])
+p_init = np.array([0.,0.])
+p_des = np.array([10.,2.])
+h = .1
+
+l = 10
+u = 50
+
+while True:
+    if u-l == 1:
+        break
+    k = (u+l)//2
+
+    T = cp.Variable((2,k-1))
+    v = cp.Variable((2,k))
+    p = cp.Variable((2,k))
+
+    F = cp.matmul(M,T) + (m*g).reshape(-1,1)
+    constr = []
+    constr += [p[:,0] == p_init, p[:,k-1] == p_des]
+    constr += [p[:,1:k] == p[:,0:k-1] + h*v[:,0:k-1]]
+    constr += [v[:,0] == 0, v[:,k-1] == 0]
+    constr += [v[:,1:k] == v[:,0:k-1] + (h/m)*F]
+    constr += [0 <= T, T <= T_m]
+
+    prob = cp.Problem(cp.Minimize(k),constr)
+
+    sol = prob.solve()
+
+    if sol == k :
+        u = k
+        T_opt = T.value
+        p_opt = p.value
+    
+    else:
+
+        l = k
+
+print(f'Minimum number of steps = {k}')
+print(f'Minimum time            = {k*h}')  
+
+##### Plots ####### 
+
+T_left = T_opt[0,:]
+T_right= T_opt[1,:]
+time = [h*i for i in range(1,k)]
+plt.plot(time,T_left,'r-',label='T_left')
+plt.plot(time,T_right,'b-',label='T_right')
+plt.legend()
+plt.title('Tensions vs time')
+plt.xlabel('time/s')
+plt.ylabel('Tension/N')
+plt.savefig('Tensions_cs18btech11039.png')
+plt.show()
+
+px = p_opt[0,:]
+py = p_opt[1,:]
+plt.plot(px,py,'g--')
+plt.title('load trajectory')
+plt.xlabel('x pos')
+plt.ylabel('y pos')
+plt.savefig('Load_trajectory_cs18btech11039.png')
+plt.show()
+
+print(f'The load trajectory is not a straight line as one might not be able to accelerate and deccelerate the fastest on a straight line. One could even draw analogies to the \'Bernoulli\'s Curves of Quickest Descent\' as the trajectory seems parabolic')

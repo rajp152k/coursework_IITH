@@ -1,0 +1,12 @@
+1_vyos:
+   set protocols static route 192.168.11.0/24 next-hop 192.168.14.2
+
+2_vyos:
+   set protocols static route 192.168.10.0/24 next-hop 192.168.12.1
+
+   for traceroute to send back info when pinging from H2 to H1, also set 
+   
+   set protocols static route 192.168.11.0/24 next-hop 192.168.13.2
+
+3_vyos:
+   set protocols static route 192.168.10.0/24 next-hop 192.168.13.1

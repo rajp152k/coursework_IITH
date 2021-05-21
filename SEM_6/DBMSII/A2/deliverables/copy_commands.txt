@@ -1,0 +1,15 @@
+\copy public.name_basics (nconst, \"primaryName\", \"birthYear\", \"deathYear\", \"primaryProfession\", \"knownForTitles\") FROM <source file path> DELIMITER E'\\t' CSV HEADER ENCODING 'UTF8' QUOTE '|' NULL '\\N' ESCAPE '|';""
+
+\copy public.title_akas (title_id, ordering, title, region, language, types, attributes, \"isOriginalTitle\") FROM <source file path> DELIMITER E'\\t' CSV HEADER ENCODING 'UTF8' QUOTE '|' NULL '\\N' ESCAPE '|';""
+
+\copy public.title_basics (tconst, \"titleType\", \"primaryTitle\", \"originalTitle\", \"isAdult\", \"startYear\", \"endYear\", \"runtimeMinutes\", genres) FROM <source file path> DELIMITER E'\\t' CSV HEADER ENCODING 'UTF8' QUOTE '|' NULL '\\N' ESCAPE '|';""
+
+\copy public.title_crew (tconst, directors, writers) FROM <source file path> DELIMITER E'\\t' CSV HEADER ENCODING 'UTF8' QUOTE '|' NULL '\\N' ESCAPE '|';""
+
+\copy public.title_episodes (tconst, \"tconstParent\", \"seasonNumber\", \"episodeNumber\") FROM <source file path> DELIMITER E'\\t' CSV HEADER ENCODING 'UTF8' QUOTE '|' NULL '\\N' ESCAPE '|';""
+
+\copy public.title_principals (tconst, ordering, nconst, category, job, characters) FROM <source file path> DELIMITER E'\\t' CSV HEADER ENCODING 'UTF8' QUOTE '|' NULL '\\N' ESCAPE '|';""
+
+\copy public.title_ratings (tconst, \"averageRating\", \"numVotes\") FROM <source file path> DELIMITER E'\\t' CSV HEADER ENCODING 'UTF8' QUOTE '|' NULL '\\N' ESCAPE '|';""
+
+\copy public.title_principals (tconst, ordering, nconst, category, job, characters) FROM <source file path> DELIMITER E'\\t' CSV HEADER ENCODING 'UTF8' QUOTE '|' NULL '\\N' ESCAPE '|';""

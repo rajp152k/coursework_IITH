@@ -1,0 +1,9 @@
+# This program demonstrates the direct plots
+
+fig figure{
+
+	x <- (1 , 10) step 1
+	y := 2*x + 2
+	plot(x, y, {color='blue'})
+
+}

@@ -1,0 +1,37 @@
+CLASS ASSIGNMENT 3
+
+
+Name : Raj Patil
+Roll no: CS18BTECH11039
+
+
+# problems at lesions at different points in the given image
+
+ - A : right optic nerve cut
+	- monocular vision always : loss of depth perception
+	- also always will have a blind spot due to non-coverage of the left eye's optic nerve  not being covered by the right as usual
+
+---
+
+ - B: optic chiasm cut
+     	- information not shared between hemispheres : issues in function
+	- for instance : an obstacle from left side of left monocular vision will not be passed on to the right hemisphere which controls the functioning of the left motor muscles : potential issues.(consider inversion of "actual" image")
+	- right field of left eye and left field of right eye are lost
+
+---
+
+ - C: right optic tract cut
+ 	- not processing right field of both monocular fields: 
+	- again a large drop in portion of field covered
+
+---
+
+ - D: post LGN towards parietal lobe (dorsal stream)
+ 	- issues with MT: detecting motion may be an issue in the right field of both eyes
+	- "How"  will be messed up
+
+---
+
+ - E: post LGN towards temporal lobe (ventral sream)
+ 	- issues with It: color and object detection may be an issue in the right field of both eyes
+	- "What" will be messed up

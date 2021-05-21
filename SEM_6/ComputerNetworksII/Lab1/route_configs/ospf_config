@@ -1,0 +1,9 @@
+1_vyos:
+    set protocols ospf area 0 network 192.168.0.0/20
+    set protocols ospf parameters router-id 0.0.0.1
+2_vyos:
+    set protocols ospf area 0 network 192.168.0.0/20
+    set protocols ospf parameters router-id 0.0.0.2
+3_vyos:
+    set protocols ospf area 0 network 192.168.0.0/20
+    set protocols ospf parameters router-id 0.0.0.3
