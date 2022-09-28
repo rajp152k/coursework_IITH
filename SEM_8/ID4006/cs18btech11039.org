@@ -1,0 +1,52 @@
+#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+options: author:t broken-links:nil c:nil creator:nil
+#+options: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:t
+#+options: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+options: timestamp:t title:t toc:t todo:t |:t
+#+title: ID 4006 : Ethics and Values
+#+date: 2022-03-18 Fri 06:51
+#+author: Raj Patil | CS18BTECH11039
+#+email: 
+#+language: en
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 28.0.50 (Org mode 9.4.5)
+
+
+* Case Study based
+** Q1
+*** Effectiveness of Tesco's Strategy
+Currently, Tesco is able to offer products to the customers at a lower cost by sourcing their labor and raw-materials in an ethically debatable manner. The effectiveness of this strategy can be evaluated with relevance to some of the stakeholders of Tesco's operations:
+**** Customers:
+They are the ones that benefit directly from Tesco's current strategy to capture the market with lower prices. However, a certain sort of potential customers who are more aware about Tesco's operations will pose as a bad publicity threat whilst they post their views on social media and consciously choose a more (subjectively) ethical alternative product. Another issue that Tesco might have encounter in the close future is that of losing customers to their competitors easily due to the fact that these customers were gained simply due to Tesco's product being one of the cheapest the time they were bought: the customers are not loyal.
+**** Farmers / Workers (Labor):
+They are the ones that take the brunt of the damage from Tesco's current strategy. As the case study indicates, potential formation of unions and strikes in the future could lead to very volatile and unstable times with the whole supply chain being disrupted - for labor and raw materials : calling for extreme measures such the need to abandon operations in a country and having to find another emerging economy to squeeze.
+**** The Environment:
+The environment does take damage, but relatively slowly, hence going unnoticed by the average customer. Again, the environmentalists could act as a potential bad publicity threat and could hamper Tesco's brand image in the long term.
+**** Shareholders:
+These simply view Tesco as an investment opportunity and will be happy with what Tesco is doing currently. If they are the only ones heard to, Tesco is probably doing perfectly fine : with the only exception being that one could still be more frugal and squeeze out more value out of the labor and the raw materials.
+
+** Q2
+*** Propositions
+I would suggest focusing more on acquiring loyal customers than undercutting competitors with lower prices. This will help stabilize their currently volatile and unfaithful customer base. This can be achieved in several ways: one of them being treating the workers/farmers better by actively trying to improve their quality of life. This could be done via setting up up-skilling programs for the semi-skilled/unskilled work that they source from these emerging economies. Another way could be setting up schools for their children. Finally, with this approach, Tesco would have to ensure that they blow their own horn, a lot and everywhere. This is the strategy that makes the average customer aware of how the competitors are able to undercut fairer players and probably gain their trust. Everyone likes being a little charitable and if Tesco can begin selling charity rather than only the products they do right now, making it convenient for the average customer to contribute: it is possible that Tesco will be preferred over its competitors.  
+*** Caveats
+Of course this is all easier said than done: one should expect some delay for these measures to actually show effect and meanwhile, be able to handle the conflicting stakeholders (the shareholders, primarily) smartly. Tesco will probably take a temporary hit in terms of potential sales and have to handle a lot of questions but such a change won't come this easy.
+However, I would hypothesize, this strategy would be more profitable in the long term, while being a comparatively more ethical and fulfilling path.
+
+* Key takeaways
+
+Many of us do like reading about philosophy and ethics and morals and the likes. But when it comes to practicing that same philosophy in testing times, we tend to falter towards the easier choice, the locally beneficial choice, the convenient choice.
+
+Throughout the class discussions, I've noticed that people, in general, are not completely aware of the consequences of the actions they take in several ways:
+ - they don't know how much a particular decision could tinge their conscience
+ - they're not exactly aware how much of an effect a decision has on all of the stakeholders
+ - they're not exactly aware what they want from something
+
+Throughout the class discussions, I've also noticed that most people also fall prey to the need to be accepted in society as a good person: which is a good thing.
+
+This implies that instead of morally policing people about what they should and shouldn't do, one could potentially create a better, subjectively ethical society by increasing awareness regarding certain decisions and placing all the perspectives and consequences in front of them, finally leaving the decision to them and not explicitly chastening them.
+
+Also, the minority think they're a minority because they simply don't talk about their views. Once someone brings up an issue, more realize that they have the same problem and join the agenda.
+
+With all these observations, what I take away from the course is that raising concerns smartly and in a manipulative manner is the way to go to handle all the interested individuals/groups. No one likes being morally policed and this should be reserved for extreme cases (probably never). Paraphrasing Nietzsche a little (too much): One simply isn't good if they were forced to do good and did good, but when they had the choice to do bad and chose to proceed with the good.
+

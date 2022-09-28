@@ -1,0 +1,50 @@
+			Roll no: 	CS18BTECH11039
+			Name: 	Raj Patil
+
+		LA3010 : Financial Institutions and Markets
+		Monetary Policy Committee Meeting 2021 Feb
+
+This is a report of the gist of the MPC meet held in Feb 2021 briefly touching upon its resolution, assessment and outlook.
+
+===
+
+Resolution:
+With the current macroeconomic situation in mind, the MPC decisions were:
+
+
+ - maintaining the policy repo rate under the liquidity adjusment facility, just as it was before not changing it, at 4 percent.
+	- consequently this means that the reverse repo rate stays the same at 3.35%
+	- this also means that the marginal standing facility (MSF) and Bank rate stayed constant at 4.25%
+
+ - continuing with and accomodative policy until need be, to lessen the impact of covid 19
+	- note that this is done while ensuring that the inflation remains along the lines of the preset targets.
+
+These decisions are along the lines of the medium term target of keeping CPI (consumer price index) at 4 +/- 2 % , simultaneously aiding growth
+
+===
+
+Assessment:
+
+ - Global Economy:
+As numerous countries face second waves of COVID-19 infections, including more virulent strains, the global economic recovery slowed in Q4 (October-December) of 2020 compared to Q3 (July-September). Risks to recovery may be reduced as a result of huge vaccination campaigns currently underway.
+In the second half of 2021, economic activity is likely to pick up.
+
+ - Domestic Economy:
+The National Statistical Office (NSO) announced its first advance estimates of GDP for 2020-21 on January 7, 2021, estimating real GDP to decrease by 7.7%, in keeping with the MPC's December 2020 resolution's projection of (-)7.5%.
+
+CPI inflation declined to 4.6 percent in December after breaking the upper tolerance barrier of 6% for six months (June-November 2020). This was due to lower food costs and favourable base effects.
+
+In December 2020 and January 2021, systemic liquidity was in huge surplus, resulting in easy financial conditions. Currency demand drove a 14.5 percent increase in reserve money year over year (on January 29, 2021).
+
+
+===
+
+
+
+Outlook:
+
+The food inflation trajectory is likely to impact the near-term forecast, given the larger-than-expected deflation in vegetable prices in December, which brought headline inflation closer to the target.
+
+In terms of the growth prognosis, rural demand is expected to remain resilient due to the positive outlook for agriculture.
+
+The MPC acknowledges that the rapid drop in food prices has improved the outlook for food prices, but certain pressures remain, and core inflation remains high. The price of gasoline and diesel at the pump has reached all-time highs.

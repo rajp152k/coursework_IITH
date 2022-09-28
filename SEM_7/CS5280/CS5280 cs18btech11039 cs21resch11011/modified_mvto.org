@@ -1,0 +1,40 @@
+#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+options: author:t broken-links:nil c:nil creator:nil
+#+options: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:t
+#+options: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+options: timestamp:t title:t toc:t todo:t |:t
+#+title: Modified MVTO Pseudo-code
+#+date: [2021-12-13 Mon 08:42]
+#+author: Raj Patil
+#+email: rajp152k@Raj-Y520
+#+language: en
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 28.0.50 (Org mode 9.4.5)
+
+* Intuition
+ - we intend to deal with unnecessary aborts that occur due to a late write from an earlier transaction
+ - these happen when for an incoming write on tj, there exists a triple of transactions ti < tj < tk such that tk has already the same data item from ti
+ - such can be salvaged if tk never reads any other datum before tj writes it.
+ - hence whenever such a trio exists, we check if for each datum in the intersection of the read set of tk and the write set of tk, the reads are scheduled before the writes.
+* Logistics
+ - To implement the above proposition we need to have read and write sets for each transaction
+ - we also need to store the read and write timestamps for each transaction for each data item
+
+
+*  Pseudocode 
+
+
+#+begin_src
+  def begin_trans(tid):
+     init(read_log)
+     init(write_log)
+
+
+  def read(tid,x):
+     trans(tid).insert(tuple(x,time_now))
+     [read x from trans(tid) with largest write-time]
+
+  def write(tid,x,):
+    
+#+end_src
